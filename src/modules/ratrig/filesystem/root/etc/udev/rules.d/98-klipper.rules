@@ -1,3 +1,4 @@
-SUBSYSTEMS=="usb", ATTRS{manufacturer}=="Klipper", ATTRS{product}=="stm32f407xx", ACTION=="add", SYMLINK+="klipper", RUN+="/home/pi/klipper_config/v-core-3/scripts/klipper-mcu-added.sh"
+# skt 1.2 pro
+SUBSYSTEMS=="usb", ATTRS{idProduct}=="614e",  ATTRS{idVendor}=="1d50", ACTION=="add", SYMLINK+="klipper", RUN+="/home/pi/klipper_config/v-core-3/scripts/klipper-mcu-added.sh"
 
 ACTION=="remove", ENV{DEVLINKS}=="/dev/klipper"
