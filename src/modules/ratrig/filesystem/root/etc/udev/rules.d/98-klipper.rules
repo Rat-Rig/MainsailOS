@@ -1,4 +1,6 @@
-# skt 1.2 pro
-SUBSYSTEMS=="usb", ATTRS{idProduct}=="614e",  ATTRS{idVendor}=="1d50", ACTION=="add", SYMLINK+="klipper", RUN+="/home/pi/klipper_config/v-core-3/scripts/klipper-mcu-added.sh"
+# btt skt 1.2 pro 
+## pass device name to bash script or edit make-and-flash-mcu.sh to look for the device name? The latter might be easier if you want to trigger via fluidd
+SUBSYSTEMS=="usb", ATTRS{idProduct}=="614e",  ATTRS{idVendor}=="1d50", ACTION=="add", SYMLINK+="klipper", RUN+="/home/pi/klipper_config/v-core-3/scripts/klipper-mcu-added.sh klipper"
 
+## need to handle remove for different device names
 ACTION=="remove", ENV{DEVLINKS}=="/dev/klipper"
