@@ -17,7 +17,7 @@ logfile="/var/log/vcore.log"
 case "$1" in
 start)
 	echo "$(date +"%Y-%m-%d %T"): Updating vcore3" >> "$logfile"
-	echo "RESTART" > /tmp/klipper 
+	echo "RESTART" > /tmp/printer
 	;;
 stop)
 	echo "$(date +"%Y-%m-%d %T"): Stopping vcore3" >> "$logfile"
