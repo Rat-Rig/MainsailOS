@@ -1,7 +1,4 @@
-# 3D Printer Klipper Troubleshooting guide
-
-## Motors
-### Kinematic Bed does not finish leveling successfully
+## Kinematic Bed does not finish leveling successfully
 This issue often shows up as bed being more out of alignment each iteration and sometimes does throw an error after few iterations.
 
 If you are getting this error, this section should help you:

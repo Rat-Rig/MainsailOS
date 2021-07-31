@@ -8,7 +8,12 @@ You're not supposed to change *any* files inside the config/ folder. You should 
 
 ## Klipper says the MCU is unable to connect
 Double check your USB connection, try another cable (the one that comes with the board usually works), and check that your firmware was flashed correctly (refer to the guide for your board).
+
+[filename](troubleshooting/kinematic_bed.md ':include')
+
 ## Get help
 For further support check out the v-coreos-support and klipper channels on Discord. Use the invite link below to join.
+
+
 
 <a href="https://discord.gg/D62e8XNeYa" class="button">Join the Unnofficial RatRig Discord Community</a>
