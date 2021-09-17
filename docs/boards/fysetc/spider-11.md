@@ -18,6 +18,9 @@ can be installed from V-CoreOS.
 Make sure your board is connected to the Pi (USB-C on the Spider, USB-A on the Pi). Connect with SSH (putty) to the Pi (login pi, password raspberry if you did
 not change the defaults).
 
+Fysetc provide instructions on installing Klipper here: https://github.com/FYSETC/FYSETC-SPIDER#42-Klipper
+but here is the sequence that worked for the author.
+
 Put a jumper between 3.3V and BT0 on the Spider.
 
 ![Fysetc Spider V1.1 BT0 Jumper](_media/BTO-jumper.png)
@@ -26,12 +29,18 @@ Press the reset button on the Spider.
 
 On the Pi, run the following commands:
 
+	lsusb
+
+You should see a device in DFU mode listed. This is your Spider ready to have the firmware
+uploaded.
+
+Then run:
+
 	cd ~klipper
 	make menuconfig
 
-(the firmware should be configured for the STM32 architecture, STM32F446
-Processor model, No bootloader, "12MHz crystal" as clock reference and
-USB on PA11/PA12 as the Communication Interface)
+(the firmware should be configured as per the instructions provided by Fysetc in
+the link above)
 
 Then run:
 
@@ -49,6 +58,7 @@ run the command "sudo service klipper start".
 
 ### via SD Card
 
+Errrr....... 
 
 Copy the `firmware-spider-11.bin` file from the release page to the SD card that goes into your control board and call it `firmware.bin`, then insert the SD card in to the control board.
 
