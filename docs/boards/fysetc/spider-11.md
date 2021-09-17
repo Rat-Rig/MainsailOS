@@ -11,15 +11,16 @@
 
 For the first time install of Klipper onto the Spider there are two methods.  Via
 SSH/USB or with an SD Card.  Once klipper is installed, future updates
-can be installed from V-CoreOS.
+can be installed from V-CoreOS using the ~/klipper_config/config/boards/fysetc-spider/make-and-flash-mcu.sh command.
 
 ### via SSH/USB
 
-Make sure your board is connected to the Pi (USB-C on the Spider, USB-A on the Pi). Connect with SSH (putty) to the Pi (login pi, password raspberry if you did
-not change the defaults).
+Make sure your board is connected to the Pi (USB-C on the Spider, USB-A on the Pi). Connect with SSH (PuTTy for Windows users) to the Pi (login pi, password raspberry if you did not change the defaults).
 
-Fysetc provide instructions on installing Klipper here: https://github.com/FYSETC/FYSETC-SPIDER#42-Klipper
-but here is the sequence that worked for the author.
+Fysetc provide instructions on installing Klipper here:
+https://github.com/FYSETC/FYSETC-SPIDER#42-Klipper but there are some
+parts of that are less clear than one might hope so here is the sequence
+that worked for the author.
 
 Put a jumper between 3.3V and BT0 on the Spider.
 
@@ -47,7 +48,7 @@ Now remove the jumper between 3.3V and BT0.  Press the reset button on the Spide
 
 Run "lsusb" again and you should see a device by the name "OpenMoko, Inc.". This is your Spider running Klipper.
 
-run the command "sudo service klipper start".
+run the command "sudo service klipper start". V-CoreOS should now be able to communicate with your Spider.
 
 
 ### via SD Card
