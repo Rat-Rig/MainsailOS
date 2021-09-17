@@ -9,7 +9,7 @@
 
 ## Firmware installation
 
-For the first time install of Klipper there are two methods.  Via
+For the first time install of Klipper onto the Spider there are two methods.  Via
 SSH/USB or with an SD Card.  Once klipper is installed, future updates
 can be installed from V-CoreOS.
 
@@ -34,18 +34,10 @@ On the Pi, run the following commands:
 You should see a device in DFU mode listed. This is your Spider ready to have the firmware
 uploaded.
 
-Then run:
+Building the firmware is covered here: https://rat-rig.github.io/V-CoreOS/#/manual-firmware-compilation
 
-	cd ~klipper
-	make menuconfig
+Once the firmware is built run:
 
-(the firmware should be configured as per the instructions provided by Fysetc in
-the link above)
-
-Then run:
-
-	make clean
-	make
 	sudo service klipper stop
 	dfu-util -a 0 -s 0x08000000:leave -D ~/klipper/out/klipper.bin
 
