@@ -51,7 +51,9 @@ Then run:
 
 You should see the firmware being written to your Spider.
 
-Now remove the jumper between 3.3V and BT0.  Press reset button
+Now remove the jumper between 3.3V and BT0.  Press the reset button on the Spider.
+
+Run "lsusb" again and you should see a device by the name "OpenMoko, Inc.". This is your Spider running Klipper.
 
 run the command "sudo service klipper start".
 
@@ -81,6 +83,14 @@ You can verify if the board flashed correctly by checking if the firmware.bin fi
 ?> Once you have verifed the board has been succesfully flashed, you don't have to reinsert the SD card.
 
 ### Flashing via USB (Recommended)
-Another option is to SSH into the pi using something like PuTTy or `ssh pi@v-coreos.local` via the commandline on OS X and Linux machines. Execute `~/klipper_config/config/boards/btt-octopus-11/make-and-flash-mcu.sh` and the Pi will compile the klipper firmware and flash the board for you. This has the benefit that it will always recompile the firmware to match your klipper version, so you are not reliant upon the V-CoreOS developers to upload a new firmware binary for you.
+Another option is to SSH into the pi using something like PuTTy or `ssh pi@v-coreos.local` via the commandline on OS X and Linux machines. Execute `~/klipper_config/config/boards/fysetc-spider/make-and-flash-mcu.sh` and the Pi will compile the klipper firmware and flash the board for you. This has the benefit that it will always recompile the firmware to match your klipper version, so you are not reliant upon the V-CoreOS developers to upload a new firmware binary for you.
 
 !> Be sure to remove the SD card from the board before attempting to flash, if one is in there.
+
+## Known Problems
+
+If V-CoreOS complains that it can't open "/dev/fysetc-spider" run the following command on your Pi:
+
+	sudo ln -s /home/pi/klipper_config/config/boards/fysetc-spider/*.rules /etc/udev/rules.d/
+
+Then disconnect the USB cable, reconnect it and /dev/fysetc-spider should exist. You only need to do this once.
