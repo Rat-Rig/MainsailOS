@@ -9,15 +9,48 @@
 
 ## Firmware installation
 
-!> Make sure your board is connected to the Pi (USB-C on the Spider, USB-A on the Pi).
+For the first time install of Klipper there are two methods.  Via
+SSH/USB or with an SD Card.  Once klipper is installed, future updates
+can be installed from V-CoreOS.
 
-### via USB
+### via SSH/USB
 
-Put a jumper between 3.3V and BT0 on the Spider
+Make sure your board is connected to the Pi (USB-C on the Spider, USB-A on the Pi). Connect with SSH (putty) to the Pi (login pi, password raspberry if you did
+not change the defaults).
+
+Put a jumper between 3.3V and BT0 on the Spider.
 
 ![Fysetc Spider V1.1 BT0 Jumper](_media/BTO-jumper.png)
 
-Move the `firmware-octopus-11.bin` file from the release page to the SD card that goes into your control board and call it `firmware.bin`, then insert the SD card in to the control board.
+Press the reset button on the Spider.
+
+On the Pi, run the following commands:
+
+	cd ~klipper
+	make menuconfig
+
+(the firmware should be configured for the STM32 architecture, STM32F446
+Processor model, No bootloader, "12MHz crystal" as clock reference and
+USB on PA11/PA12 as the Communication Interface)
+
+Then run:
+
+	make clean
+	make
+	sudo service klipper stop
+	dfu-util -a 0 -s 0x08000000:leave -D ~/klipper/out/klipper.bin
+
+You should see the firmware being written to your Spider.
+
+Now remove the jumper between 3.3V and BT0.  Press reset button
+
+run the command "sudo service klipper start".
+
+
+### via SD Card
+
+
+Copy the `firmware-spider-11.bin` file from the release page to the SD card that goes into your control board and call it `firmware.bin`, then insert the SD card in to the control board.
 
 ?> 
 You can verify if the board flashed correctly by checking if the firmware.bin file has been changed to firmware.CUR on the SD card. If you have trouble flashing the motherboard, start unplugging your wires beginning with the endstops, sometimes faulty wiring can cause the board to not boot properly.
