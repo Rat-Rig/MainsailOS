@@ -33,11 +33,10 @@ https://github.com/FYSETC/FYSETC-SPIDER#42-Klipper but some
 parts of that are less clear than one might wish so here is the sequence
 that worked for the author.
 
-Put a jumper between 3.3V and BT0 on the Spider.
 
-<p>
 ![Fysetc Spider V1.1 BT0 Jumper](_media/BTO-jumper.png)
-</p>
+
+Connect a jumper between 3.3V and BT0 on the Spider.
 
 Press the reset button on the Spider.
 
