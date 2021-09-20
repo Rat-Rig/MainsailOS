@@ -20,7 +20,7 @@ the Pi running.
 
 For the first time install of Klipper onto the Spider; there are two
 methods.  Via SSH(PuTTY)/USB or with an SD Card.  Once klipper is
-installed, future updates can be installed from V-CoreOS using the
+installed, future updates can be installed over a Pi/Spider USB connection from V-CoreOS using the
 ~/klipper_config/config/boards/fysetc-spider/make-and-flash-mcu.sh
 command and you don't need to fiddle around with jumpers or SDCards.
 
