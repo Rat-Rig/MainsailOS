@@ -35,7 +35,9 @@ that worked for the author.
 
 Put a jumper between 3.3V and BT0 on the Spider.
 
+<p>
 ![Fysetc Spider V1.1 BT0 Jumper](_media/BTO-jumper.png)
+</p>
 
 Press the reset button on the Spider.
 
