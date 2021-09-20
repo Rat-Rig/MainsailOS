@@ -12,7 +12,9 @@
 While the Spider can connect to your Pi via it's UART, a better way of
 doing it is via USB as this allows new versions of Klipper to be
 uploaded without needing an SDCard.  You can, of course, power the Pi
-from your Spider whichever form of connection you use.
+from your Spider whichever form of connection you use or if you use
+a dedicated Pi Power Supply you can shut down your Spider while leaving
+the Pi running.
 
 ## Firmware installation
 
@@ -20,8 +22,7 @@ For the first time install of Klipper onto the Spider; there are two
 methods.  Via SSH(PuTTY)/USB or with an SD Card.  Once klipper is
 installed, future updates can be installed from V-CoreOS using the
 ~/klipper_config/config/boards/fysetc-spider/make-and-flash-mcu.sh
-command and you don't need to fiddle around with jumpers or, if you're
-connecting via USB, SDCards.
+command and you don't need to fiddle around with jumpers or SDCards.
 
 ### via SSH(PuTTY)/USB
 
