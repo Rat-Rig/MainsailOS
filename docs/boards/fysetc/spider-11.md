@@ -95,8 +95,26 @@ The easiest option is to SSH into the pi using something like PuTTy or `ssh pi@v
 
 ## Known Problems
 
+### Can't open /dev/fysetc-spider
+
 If V-CoreOS complains that it can't open "/dev/fysetc-spider" run the following command on your Pi:
 
 	sudo ln -s /home/pi/klipper_config/config/boards/fysetc-spider/*.rules /etc/udev/rules.d/
 
 Then disconnect the USB cable, reconnect it and /dev/fysetc-spider should exist. You only need to do this once.
+
+### Undervoltage errors
+
+If you are using the Fysetc TMC2209 step-sticks and performance mode; turn off stealthchop for the X & Y motors to avoid random Undervoltage errors.
+
+Add this to the "### USER OVERRIDES" section of printer.cfg:
+
+	[tmc2209 stepper_x]
+	stealthchop_threshold: 0
+
+	[tmc2209 stepper_y]
+	stealthchop_threshold: 0
+
+
+	
+
