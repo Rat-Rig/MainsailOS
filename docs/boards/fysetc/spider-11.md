@@ -93,6 +93,86 @@ The easiest option is to SSH into the pi using something like PuTTy or `ssh pi@v
 
 !> Be sure to remove the SD card from the board before attempting to flash, if one is in there.
 
+## ADXL Connection
+
+In your printer.cfg add the following:
+
+	#   For ADXL
+	[resonance_tester]
+	accel_chip: adxl345
+	# Change the following to the centre of your bed.
+	probe_points: 200,200,20
+
+	[adxl345]
+	cs_pin: PA2
+
+Connect the ADXL to the Spider like so:
+
+	Spider         ADXL
+	3V3            VCC
+	GND            GND
+	MISO           SDO
+	MOSI           SDA
+	SCK            SCL
+	PA2            CS
+
+![Fysetc Spider V1.1 ADXL Wiring](_media/SpiderADXL-Wiring.png)
+
+The GND, MISO, MOSI and SCK pins are found on the eight pin block to the
+left of the SD Card holder.
+
+PA2 is the right hand pin on the three pin Y+ socket or the right hand pin on the E1 DIAG header.  
+
+3V3 can be picked up from the Y+ socket (left hand pin) but check it's
+configured for 3.3 Volts and not 5 (set by solder bridge on the back of
+the board).  Alternatively, 3.3 Volts is available on the Z- endstop
+socket on next to the BT0 pin.
+
+See the Fysetc wiring plan for details: https://github.com/FYSETC/FYSETC-SPIDER/blob/main/images/Spider_V1.0_Pinout.jpg
+
+## Mini 12864 Display Connection
+
+The Mini 12864 should be connected to the EXP1 & EXP2 ports on the
+Spider.  If you have a version 1.0 board then be aware that the ports
+were wrongly labeled on the board's silkscreen.  This was corrected on
+the V1.1 board.
+
+IDC Sockets?
+
+In your printer.cfg add the following:
+
+	# Support for a 12864 display attached to the Spider
+	[display]
+	lcd_type: uc1701
+	cs_pin: EXP1_3
+	a0_pin: EXP1_4
+	rst_pin: EXP1_5
+	contrast: 63
+	encoder_pins: ^EXP2_5, ^EXP2_3
+	click_pin: ^!EXP1_2
+	menu_reverse_navigation: true
+	spi_bus: spi1
+	#
+	[output_pin beeper]
+	pin: EXP1_1
+	#
+	[neopixel fysetc_mini12864]
+	pin: EXP1_6
+	chain_count: 3
+	color_order: RGB
+	initial_RED: 0.0
+	initial_GREEN: 1.0
+	initial_BLUE: 0.0
+	#   Set RGB values on boot up for each Neopixel. 
+	#   Index 1 = display, Index 2 and 3 = Knob
+	[delayed_gcode setdisplayneopixel]
+	initial_duration: 1
+	gcode:
+		SET_LED LED=fysetc_mini12864 RED=1 GREEN=0 BLUE=0 INDEX=2 TRANSMIT=0
+		SET_LED LED=fysetc_mini12864 RED=1 GREEN=0 BLUE=0 INDEX=3 TRANSMIT=0
+		SET_LED LED=fysetc_mini12864 RED=0 GREEN=1 BLUE=0 INDEX=1
+
+
 ## Known Problems
 
 ### Can't open /dev/fysetc-spider
