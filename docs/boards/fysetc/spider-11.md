@@ -139,8 +139,6 @@ Spider.  If you have a version 1.0 board then be aware that the ports
 were wrongly labeled on the board's silkscreen.  This was corrected on
 the V1.1 board.
 
-IDC Sockets?
-
 In your printer.cfg add the following:
 
 	# Support for a 12864 display attached to the Spider
