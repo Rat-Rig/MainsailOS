@@ -118,10 +118,12 @@ Connect the ADXL to the Spider like so:
 
 ![Fysetc Spider V1.1 ADXL Wiring](_media/SpiderADXL-Wiring.png)
 
-The GND, MISO, MOSI and SCK pins are found on the eight pin block to the
-left of the SD Card holder.
+The MISO, MOSI and SCK pins are found on the eight pin block to the left
+of the SD Card holder.
 
 PA2 is the right hand pin on the three pin Y+ socket or the right hand pin on the E1 DIAG header.  
+
+GND can be found on the middle pin of the Y+ socket.
 
 3V3 can be picked up from the Y+ socket (left hand pin) but check it's
 configured for 3.3 Volts and not 5 (set by solder bridge on the back of
