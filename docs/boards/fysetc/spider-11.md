@@ -31,20 +31,20 @@ easiest.
 ### via SD Card
 
 Copy the 'firmware-fysetc-spider.bin' file found on the
-https://github.com/Rat-Rig/V-CoreOS/releases page to a FAT 32 SD Card.
+https://github.com/Rat-Rig/V-CoreOS/releases page to a file named 'firmware.bin' on your SD Card.
 
 Power off your Spider.  Insert the SD Card created above and power the
 Spider back on.  The upload should take a few seconds and a LED by the
 SDCard slot should flash while this is happening.
 
-When complete power off your Spider and remove the SD Card (press to
+When complete, power off your Spider and remove the SD Card (press to
 release as it's a latching style SD Card socket).
 
 For more information; this is documented on the Fysetc pages:
 https://github.com/FYSETC/FYSETC-SPIDER#42-Klipper
 
 !> If you have an ADXL345 connected to your Spider as shown below, this
-*must* be disconnected from your Spider to avoid conflicts with the SD
+must be disconnected from your Spider to avoid conflicts with the SD
 Card while loading the firmware.
 
 ### via SSH(PuTTY)/USB
@@ -133,7 +133,7 @@ Connect the ADXL345 to the Spider like so:
 
 See the Fysetc wiring plan for details: https://github.com/FYSETC/FYSETC-SPIDER/blob/main/images/Spider_V1.0_Pinout.jpg
 
-!> Disconnect the ADSL345 from your Spider if you are uploading firmware using the SD Card.
+!> Disconnect the ADSL345 from your Spider while you are uploading firmware using the SD Card.
 
 ## Mini 12864 Display Connection
 
