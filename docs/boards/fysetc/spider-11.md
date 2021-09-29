@@ -63,7 +63,7 @@ pi, password raspberry if you did not change the defaults).
 
 ![Fysetc Spider V1.1 BT0 Jumper](_media/BT0-jumper.png)
 
-Connect a jumper between 3.3V and BT0 on the Spider.
+Connect a jumper between 3.3V and BT0 on the Spider as shown above.
 
 Press the reset button on the Spider.
 
@@ -75,10 +75,6 @@ You should see a list of DFU devices.  This is your Spider ready to have
 the firmware uploaded.
 
 Build the firmware which is covered here: https://rat-rig.github.io/V-CoreOS/#/manual-firmware-compilation
-
-The Klipper config settings for the Spider v1.1 are shown below:
-
-![Fysetc Spider Klipper Config](_media/Klipper_config.png)
 
 Once the firmware is built on the Pi run:
 
