@@ -7,6 +7,10 @@
 
 !> If you use the Ratrig endstop switches and cables, do **not** blindly plug them in to your Spider as doing this will short the board's 3.3V supply rail.  You will probably have to swap the outer two wires (red and white) on the board end of the cable but double check this.
 
+!> Before connecting a low voltage probe (like a BL Touch) **check** the probe voltage selector jumper.
+
+![Fysetc Spider V1.1 Probe Voltage Selector](_media/Probe_Voltage.png)
+
 ### Connection to your Pi
 
 While the Spider can connect to your Pi via it's UART, a better way of
@@ -19,20 +23,43 @@ the Pi running.
 ## Firmware installation
 
 For the first time install of Klipper onto the Spider; there are two
-methods.  Via SSH(PuTTY)/USB or with an SD Card.  Once klipper is
-installed, future updates can be installed over a Pi/Spider USB connection from V-CoreOS using the
-~/klipper_config/config/boards/fysetc-spider/make-and-flash-mcu.sh
-command and you don't need to fiddle around with jumpers or SDCards.
+methods.  With an SD Card or via SSH(PuTTY)/USB.  
+
+For a first time install, the SD Card method is suggested as being the
+easiest.
+
+### via SD Card
+
+Copy the 'firmware-fysetc-spider.bin' file found on the
+https://github.com/Rat-Rig/V-CoreOS/releases page to a FAT 32 SD Card.
+
+Power off your Spider.  Insert the SD Card created above and power the
+Spider back on.  The upload should take a few seconds and a LED by the
+SDCard slot should flash while this is happening.
+
+When complete power off your Spider and remove the SD Card (press to
+release as it's a latching style SD Card socket).
+
+For more information; this is documented on the Fysetc pages:
+https://github.com/FYSETC/FYSETC-SPIDER#42-Klipper
+
+!> If you have an ADXL345 connected to your Spider as shown below, this
+*must* be disconnected from your Spider to avoid conflicts with the SD
+Card while loading the firmware.
 
 ### via SSH(PuTTY)/USB
 
-Make sure your board is connected to the Pi (USB-C on the Spider, USB-A on the Pi). Connect with SSH (PuTTy for Windows users) to the Pi (login pi, password raspberry if you did not change the defaults).
+While the SD Card method described above is the easiest, users that are
+comfortable with SSH/PuTTY may prefer this more advanced method.
 
 Fysetc provide instructions on installing Klipper here:
-https://github.com/FYSETC/FYSETC-SPIDER#42-Klipper but some
-parts of that are less clear than one might wish so here is the sequence
-that worked for the author.
+https://github.com/FYSETC/FYSETC-SPIDER#42-Klipper but some parts of
+that are less clear than one might wish so here is the sequence that
+worked for the author.
 
+Make sure your board is connected to the Pi (USB-C on the Spider, USB-A
+on the Pi).  Connect with SSH (PuTTy for Windows users) to the Pi (login
+pi, password raspberry if you did not change the defaults).
 
 ![Fysetc Spider V1.1 BT0 Jumper](_media/BTO-jumper.png)
 
@@ -42,12 +69,16 @@ Press the reset button on the Spider.
 
 On the Pi, run the following command:
 
-	lsusb
+	dfu-util --list
 
-You should see a device in DFU mode listed. This is your Spider ready to have the firmware
-uploaded.
+You should see a list of DFU devices.  This is your Spider ready to have
+the firmware uploaded.
 
-Building the firmware is covered here: https://rat-rig.github.io/V-CoreOS/#/manual-firmware-compilation
+Build the firmware which is covered here: https://rat-rig.github.io/V-CoreOS/#/manual-firmware-compilation
+
+The Klipper config settings for the Spider v1.1 are shown below:
+
+![Fysetc Spider Klipper Config](_media/Klipper_config.png)
 
 Once the firmware is built on the Pi run:
 
@@ -58,57 +89,39 @@ You should see the firmware being written to your Spider.
 
 Now remove the jumper between 3.3V and BT0 on the Spider.  Press the reset button on the Spider.
 
-Run "lsusb" again and you should see a device by the name "OpenMoko, Inc.". This is your Spider running Klipper.
+Run "lsusb" on the Pi and you should see a device by the name "OpenMoko, Inc.". This is your Spider running Klipper.
 
 run the command "sudo service klipper start". V-CoreOS should now be able to communicate with your Spider.
 
+### Klipper Updates
 
-### via SD Card
+Sometimes klipper makes changes to the microcontroller code and thus
+your Spider need to be reflashed with new firmware.  You can do that in 2
+ways.
 
-This is documented on the Fysetc pages: https://github.com/FYSETC/FYSETC-SPIDER#42-Klipper
-
-Build the firmare as documented here: https://rat-rig.github.io/V-CoreOS/#/manual-firmware-compilation
-
-Copy the klipper.bin file (~/klipper/out/klipper.bin) to a file named firmware.bin on an SD Card.
-
-Power off your Spider.  Insert the SD Card created above and power the
-Spider back on.  The upload should take around 30 seconds and a LED by
-the SDCard slot should flash while this is happening.
+The updates can be installed with an SD Card (same method as
+the first install described above) or over a Pi/Spider USB connection from V-CoreOS
+using SSH(PuTTY) and the provided
+~/klipper_config/config/boards/fysetc-spider/make-and-flash-mcu.sh
+command so you don't need to fiddle around with SD Cards.
 
 ## Setup
 
 If you're going through initial setup please continue in the [installation guide](installation.md#setup)
 
-## Firmware upgrade
-
-Sometimes klipper makes changes to the microcontroller code and thus your MCU need to be reflashed with new firmware. You can do that in 2 ways.
-
-### SD Card
-
-If you're not used to the command line or haven't used SSH before, the easiest way is to download the new firmware file from the github release page and follow the procedure above for loading the firmware via SD Card. New firmware files will uploaded to the latest release when the klipper firmware changes, this is a manual process though and might not be immediately available. Therefore the recommended method is [flashing via usb](#flashing-via-usb)
-
-### Flashing via USB (Recommended)
-
-The easiest option is to SSH into the pi using something like PuTTy or `ssh pi@v-coreos.local` via the commandline on OS X and Linux machines. Execute `~/klipper_config/config/boards/fysetc-spider/make-and-flash-mcu.sh` and the Pi will compile the klipper firmware and flash the board for you. This has the benefit that it will always recompile the firmware to match your klipper version, so you are not reliant upon the V-CoreOS developers to upload a new firmware binary for you.
-
-!> Be sure to remove the SD card from the board before attempting to flash, if one is in there.
-
-## ADXL Connection
+## ADXL345 Connection
 
 In your printer.cfg add the following:
 
-	#   For ADXL
+	#   For ADXL345
 	[resonance_tester]
 	accel_chip: adxl345
 	# Change the following to the centre of your bed.
 	probe_points: 200,200,20
 
-	[adxl345]
-	cs_pin: PA2
+Connect the ADXL345 to the Spider like so:
 
-Connect the ADXL to the Spider like so:
-
-	Spider         ADXL
+	Spider         ADXL345
 	3V3            VCC
 	GND            GND
 	MISO           SDO
@@ -118,19 +131,9 @@ Connect the ADXL to the Spider like so:
 
 ![Fysetc Spider V1.1 ADXL Wiring](_media/SpiderADXL-Wiring.png)
 
-The MISO, MOSI and SCK pins are found on the eight pin block to the left
-of the SD Card holder.
-
-PA2 is the right hand pin on the three pin Y+ socket or the right hand pin on the E1 DIAG header.  
-
-GND can be found on the middle pin of the Y+ socket.
-
-3V3 can be picked up from the Y+ socket (left hand pin) but check it's
-configured for 3.3 Volts and not 5 (set by solder bridge on the back of
-the board).  Alternatively, 3.3 Volts is available on the Z- endstop
-socket on next to the BT0 pin.
-
 See the Fysetc wiring plan for details: https://github.com/FYSETC/FYSETC-SPIDER/blob/main/images/Spider_V1.0_Pinout.jpg
+
+!> Disconnect the ADSL345 from your Spider if you are uploading firmware using the SD Card.
 
 ## Mini 12864 Display Connection
 
@@ -145,13 +148,15 @@ In your printer.cfg add the following:
 	[display]
 	lcd_type: uc1701
 	cs_pin: EXP1_3
+	spi_software_mosi_pin: PA7
+	spi_software_miso_pin: PA6
+	spi_software_sclk_pin: PA5
 	a0_pin: EXP1_4
 	rst_pin: EXP1_5
-	contrast: 63
 	encoder_pins: ^EXP2_5, ^EXP2_3
 	click_pin: ^!EXP1_2
+	contrast: 63
 	menu_reverse_navigation: true
-	spi_bus: spi1
 	#
 	[output_pin beeper]
 	pin: EXP1_1
@@ -187,6 +192,7 @@ Then disconnect the USB cable, reconnect it and /dev/fysetc-spider should exist.
 
 If you are using the Fysetc TMC2209 step-sticks and performance mode; turn off stealthchop for the X & Y motors to avoid random Undervoltage errors.
 
+
 Add this to the "### USER OVERRIDES" section of printer.cfg:
 
 	[tmc2209 stepper_x]
@@ -195,6 +201,18 @@ Add this to the "### USER OVERRIDES" section of printer.cfg:
 	[tmc2209 stepper_y]
 	stealthchop_threshold: 0
 
+You may also see this happen for the Z motors although it's less likely. If so, just turn on stealthchop for them like so:
 
-	
+	[tmc2209 stepper_z]
+	stealthchop_threshold: 999999
+
+	[tmc2209 stepper_z1]
+	stealthchop_threshold: 999999
+
+	[tmc2209 stepper_z2]
+	stealthchop_threshold: 999999
+
+
+Klipper recommends using either stealthchop or spreadcycle for TMC drivers: https://www.klipper3d.org/TMC_Drivers.html
+
 
