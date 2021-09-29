@@ -61,7 +61,7 @@ Make sure your board is connected to the Pi (USB-C on the Spider, USB-A
 on the Pi).  Connect with SSH (PuTTy for Windows users) to the Pi (login
 pi, password raspberry if you did not change the defaults).
 
-![Fysetc Spider V1.1 BT0 Jumper](_media/BTO-jumper.png)
+![Fysetc Spider V1.1 BT0 Jumper](_media/BT0-jumper.png)
 
 Connect a jumper between 3.3V and BT0 on the Spider.
 
