@@ -7,18 +7,21 @@
 
 !> If you use the Ratrig endstop switches and cables, do **not** blindly plug them in to your Spider as doing this will short the board's 3.3V supply rail.  You will probably have to swap the outer two wires (red and white) on the board end of the cable but double check this.
 
-!> Before connecting a low voltage probe (like a BL Touch) **check** the probe voltage selector jumper.
+!> Before connecting a probe **check** the probe voltage selector jumper.
 
 ![Fysetc Spider V1.1 Probe Voltage Selector](_media/Probe_Voltage.png)
 
 ### Connection to your Pi
 
-While the Spider can connect to your Pi via it's UART, a better way of
-doing it is via USB as this allows new versions of Klipper to be
-uploaded without needing an SDCard.  You can, of course, power the Pi
-from your Spider whichever form of connection you use or if you use
-a dedicated Pi Power Supply you can shut down your Spider while leaving
-the Pi running.
+While the Spider can connect to your Pi via it's UART this is not
+supported by V-Core OS as standard and will require manual firmware
+configuration.
+
+The normal V-Core OS connection is via USB as this allows new versions
+of Klipper to be uploaded without needing an SDCard.  You can, of
+course, power the Pi from your Spider whichever form of connection you
+use or if you use a dedicated Pi Power Supply you can shut down your
+Spider while leaving the Pi running.
 
 ## Firmware installation
 
@@ -30,8 +33,9 @@ easiest.
 
 ### via SD Card
 
-Copy the 'firmware-fysetc-spider.bin' file found on the
-https://github.com/Rat-Rig/V-CoreOS/releases page to a file named 'firmware.bin' on your SD Card.
+Copy the 'firmware-fysetc-spider.bin' file found on 
+[V-CoreOS Releases Page](https://github.com/Rat-Rig/V-CoreOS/releases)
+to a file named 'firmware.bin' on your SD Card.
 
 Power off your Spider.  Insert the SD Card created above and power the
 Spider back on.  The upload should take a few seconds and a LED by the
@@ -107,7 +111,7 @@ If you're going through initial setup please continue in the [installation guide
 
 ## ADXL345 Connection
 
-In your printer.cfg add the following:
+In your printer.cfg uncomment the following:
 
 	#   For ADXL345
 	[resonance_tester]
@@ -118,12 +122,12 @@ In your printer.cfg add the following:
 Connect the ADXL345 to the Spider like so:
 
 	Spider         ADXL345
-	3V3            VCC
+	5V             VCC
 	GND            GND
 	MISO           SDO
 	MOSI           SDA
 	SCK            SCL
-	PA2            CS
+	CS             CS
 
 ![Fysetc Spider V1.1 ADXL Wiring](_media/SpiderADXL-Wiring.png)
 
