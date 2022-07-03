@@ -54,6 +54,7 @@ This is the ONLY gcode you need, delete everything else. Copy paste the followin
 Start GCode
 ```properties
 START_PRINT EXTRUDER_TEMP=[first_layer_temperature] BED_TEMP=[first_layer_bed_temperature]
+M83 ; use relative distances for extrusion
 ```
 
 End GCode
