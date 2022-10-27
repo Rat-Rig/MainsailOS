@@ -41,7 +41,7 @@ git p7zip-full python3 curl
 ## Compiling source
 
 ```bash
-git clone https://github.com/Rat-Rig/RatOS.git
+git clone https://github.com/Artemis-OS/RatOS.git
 cd RatOS/
 make build
 ```
@@ -50,7 +50,7 @@ or without docker:
 
 ```
 git clone https://github.com/guysoft/CustomPiOS.git
-git clone https://github.com/Rat-OS/RatOS.git
+git clone https://github.com/Artemis-OS/RatOS.git
 cd RatOS/src/image wget -c --trust-server-names 'https://downloads.raspberrypi.org/raspios_lite_armhf_latest'
 cd ..
 ../../CustomPiOS/src/update-custompios-paths
