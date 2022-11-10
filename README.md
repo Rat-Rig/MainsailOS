@@ -41,8 +41,8 @@ git p7zip-full python3 curl
 ## Compiling source
 
 ```bash
-git clone https://github.com/Artemis-OS/RatOS.git
-cd RatOS/
+git clone https://github.com/Artemis-OS/KlipperOS.git
+cd KlipperOS/
 make build
 ```
 
@@ -50,8 +50,8 @@ or without docker:
 
 ```
 git clone https://github.com/guysoft/CustomPiOS.git
-git clone https://github.com/Artemis-OS/RatOS.git
-cd RatOS/src/image wget -c --trust-server-names 'https://downloads.raspberrypi.org/raspios_lite_armhf_latest'
+git clone https://github.com/Artemis-OS/KlipperOS.git
+cd KlipperOS/src/image wget -c --trust-server-names 'https://downloads.raspberrypi.org/raspios_lite_armhf_latest'
 cd ..
 ../../CustomPiOS/src/update-custompios-paths
 sudo modprobe loop
@@ -67,9 +67,9 @@ make distclean - Clean up the source image and trigger a new download
 
 ### Build layout
 
-RatOS/emulation - Contains dependencies for emulation testing  
-RatOS/src/image - Contains our base raspbian image  
-RatOS/src/workspace - Created during build, and output for compiled images
+KlipperOS/emulation - Contains dependencies for emulation testing  
+KlipperOS/src/image - Contains our base raspbian image  
+KlipperOS/src/workspace - Created during build, and output for compiled images
 
 ## HUGE THANK YOU to the Sponsors
 
