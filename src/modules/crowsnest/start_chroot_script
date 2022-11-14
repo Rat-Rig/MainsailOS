@@ -38,6 +38,8 @@ pushd "/home/${BASE_USER}" &> /dev/null || exit 1
     echo_green "Launch crowsnest install routine ..."
     pushd "/home/${BASE_USER}/crowsnest" &> /dev/null || exit 1
     sudo -u "${BASE_USER}" make unattended
+    # listen on all IPs for webcam access
+    sed 's/#custom_flags:        /custom_flags: --host */g' /home/${BASE_USER}/klipper_config/crowsnest.conf
     # Apply Raspicam fix if enabled.
     if [ "${CROWSNEST_FORCE_RASPICAMFIX}" == "1" ]; then
         echo -en "Applying Raspicam Fix ... \r"
