@@ -8,18 +8,19 @@ BASE_IMAGE_RESIZEROOT=600
 BASE_ADD_USER="yes"
 BASE_USER="pi"
 BASE_USER_PASSWORD="raspberry"
+#only needed for official armbian images
+export BASE_DISTRO=armbian
+export BASE_ROOT_PARTITION=1
 
-# Image source1
+# Image source
 DOWNLOAD_URL_CHECKSUM="https://github.com/toprobotmaster/-orangepi3lts/releases/download/test-orangepi3lts/Orangepi3-lts_3.0.8_debian_bullseye_server_linux5.16.17.img.sha.xz"
 DOWNLOAD_URL_IMAGE="https://github.com/toprobotmaster/-orangepi3lts/releases/download/test-orangepi3lts/Orangepi3-lts_3.0.8_debian_bullseye_server_linux5.16.17.img.xz"
 
-export BASE_APT_CACHE=no
-export OCTOPI_INCLUDE_WIRINGPI=no
-export BASE_DISTRO=armbian
-export BASE_ROOT_PARTITION=2
-export BASE_IMAGE_RESIZEROOT=500
-export BASE_IMAGE_RASPBIAN=no
-export BASE_IMAGE_ENLARGEROOT=1000
-export BASE_ARCH=arm64
+# export Variables
+export BASE_ARCH
+export BASE_IMAGE_ENLARGEROOT
+export BASE_IMAGE_RESIZEROOT
+export DOWNLOAD_URL_CHECKSUM
+export DOWNLOAD_URL_IMAGE
 
-export MODULES="base,pkgupgrade(network,piconfig,klipper,node,is_req_preinstall,moonraker,mainsail,crowsnest,ratos(linear_movement_analysis,timelapse,klipperscreen,rpi_mcu,disable-services(hotspot),dfu-util),password-for-sudo),postrename"
+export MODULES="base,passwordless_sudo,pkgupgrade(network,armbian,klipper,node,is_req_preinstall,moonraker,ratos(mainsail,crowsnest,linear_movement_analysis,timelapse,klipperscreen,rpi_mcu,disable-services(hotspot_cb1),dfu-util),password-for-sudo),postrename"
