@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          ref: "v2.x"
+          ref: "patch-1"
 
       - name: Get current version
         id: current-version
@@ -64,7 +64,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          ref: "v2.x"
+          ref: "patch-1"
           fetch-depth: 0
 
       - name: Get latest tag
@@ -108,7 +108,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          ref: v2.x
+          ref: patch-1
 
       - name: Create Matrix
         id: set-matrix
@@ -131,7 +131,7 @@ jobs:
         uses: mainsail-crew/MainsailOS-actions/build-image@master
         with:
           config: ${{ matrix.config }}
-          build-ref: v2.x
+          build-ref: patch-1
 
       - name: Copy output
         id: copy-image
