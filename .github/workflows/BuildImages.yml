@@ -2,7 +2,7 @@ name: Build MainsailOS
 on:
   push:
     branches:
-      - "v2.x"
+      - "patch-1"
     paths:
       - "src/modules/**"
       - "src/build_dist"
