@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+# Installs pam
+########
+
+set -xe
+
+source /common.sh
+install_cleanup_trap
+
+echo_green "Installing PAM by Helge Keck"
+
+pushd /home/${BASE_USER}
+
+gitclone PAM pam
+
+# Default Parameters
+KLIPPY_EXTRA_FILE="pam.py"
+KLIPPY_EXTRA_PATH="/home/${BASE_USER}/pam/klippy_extra"
+KLIPPER_MACRO_PATH="/home/${BASE_USER}/pam/klipper_macro"
+TARGET_MACRO_DIR="/home/${BASE_USER}/printer_data/config"
+
+register_klippy_extension() {
+    EXT_NAME=$1
+    EXT_PATH=$2
+    EXT_FILE=$3
+    echo_green "Registering klippy extension '$EXT_NAME' with the RatOS Configurator..."
+    if [ ! -e $EXT_PATH/$EXT_FILE ]
+    then
+        echo "ERROR: The file you're trying to register does not exist"
+        exit 1
+    fi
+    curl --silent --fail -X POST 'http://localhost:3000/configure/api/trpc/klippy-extensions.register' -H 'content-type: application/json' --data-raw "{\"json\":{\"extensionName\":\"$EXT_NAME\",\"path\":\"$EXT_PATH\",\"fileName\":\"$EXT_FILE\"}}" > /dev/null
+    if [ $? -eq 0 ]
+    then
+        echo "Registered $EXT_NAME successfully."
+    else
+        echo "ERROR: Failed to register $EXT_NAME. Is the RatOS configurator running?"
+        exit 1
+    fi
+}
+
+function create_target_macro_dir {
+    if [ -d "${TARGET_MACRO_DIR}" ]; then
+        rm -rf "${TARGET_MACRO_DIR}" 
+    fi
+    mkdir "${TARGET_MACRO_DIR}"
+}
+
+function link_macro {
+    if [ -d "${TARGET_MACRO_DIR}" ]; then
+        rm -f "${TARGET_MACRO_DIR}/pam.cfg"
+        ln -sf "${KLIPPER_MACRO_PATH}/ratos_v2.cfg" "${TARGET_MACRO_DIR}/pam.cfg"
+    else
+        echo -e "ERROR: ${TARGET_MACRO_DIR} not found."
+        exit 1
+    fi
+}
+
+create_target_macro_dir
+link_macro
+register_klippy_extension "pam" "${KLIPPY_EXTRA_PATH}" "${KLIPPY_EXTRA_FILE}"

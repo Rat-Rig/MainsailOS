@@ -1,0 +1,2 @@
+[ -n "$PAM_SHIP" ] || PAM_SHIP=https://github.com/HelgeKeck/pam
+[ -n "$PAM_BRANCH" ] || PAM_BRANCH=main
