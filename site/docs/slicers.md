@@ -120,4 +120,4 @@ IdeaMaker will complain there's no heating commands, you can safely ignore this.
 
 ## Slicer thumbnails
 
-See the Mainsail documentation: [G-Code Thumbnails in Mainsail](https://docs.mainsail.xyz/quicktips/thumbnails)
+See the Mainsail documentation: [G-Code Thumbnails in Mainsail](https://docs.mainsail.xyz/overview/features/thumbnails)
