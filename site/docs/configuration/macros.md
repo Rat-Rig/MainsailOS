@@ -279,6 +279,18 @@ Runs after the heaters are turned off in END_PRINT
 
 Runs before the toolhead is parked in END_PRINT
 
+### \_USER_START_PRINT
+
+Runs before the START_PRINT macro
+
+### \_USER_END_START_PRINT
+
+Runs after the START_PRINT macro
+
+### \_USER_START_FEATURE
+
+### \_USER_END_FEATURE
+
 ## Internal macro hooks
 
 These hooks are used internally, so if you override these be sure to copy paste the original implementation and modify that or you may break some functionality. Remember to check if there's an override in the printer's macro.cfg file, in which case that's the one you would copy.
@@ -302,3 +314,9 @@ Parks the extruder while heating the nozzle to print temperature.
 ### \_START_PRINT_AFTER_HEATING_EXTRUDER
 
 Primes the nozzle and loads the skew profile if any is defined in the RatOS variables.
+
+### \_END_PRINT_AFTER_HEATERS_OFF
+
+Runs right after the heaters have been turned off in the END_PRINT macro.
+
+
