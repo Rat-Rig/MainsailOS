@@ -11,7 +11,7 @@ RatOS comes with it's own, deeply integrated and IDEX aware, adaptive meshing im
 Adaptive bed meshing is enabled by default. To disable it set `variable_adaptive_mesh` to `False` in your printer.cfg file.
 
 | Name                   | Possible Values | Default | Description                        |
-| ---------------------- | --------------- | ------- | ---------------------------------- |
+| :--------------------- | :-------------- | :------ | :--------------------------------- |
 | variable_adaptive_mesh | True / False    | True    | Whether to enable adaptive meshing |
 
 ## Adaptive prime blob configuration
@@ -19,7 +19,7 @@ Adaptive bed meshing is enabled by default. To disable it set `variable_adaptive
 For single toolhead printer you can control the location and direction of the prime blob, IDEX printers do use a fully automated and intelligent prime control depending on the situation and print mode. 
 
 | Name                             | Possible Values                 | Default     | Description                      |
-| -------------------------------- | ------------------------------- | ----------- | -------------------------------- |
+| :------------------------------- | :------------------------------ | :---------- | :------------------------------- |
 | variable_nozzle_priming          | "primeblob", False              | "primeblob" | Whether to enable the prime blob |
 | variable_nozzle_prime_start_x    | "min", "max", Number            | "max"       | non IDEX priming x-location      |
 | variable_nozzle_prime_start_y    | "min", "max", Number            | "min"       | non IDEX priming y-location      |
@@ -28,7 +28,7 @@ For single toolhead printer you can control the location and direction of the pr
 
 ## Prime blob x-margin 
 
-By default the primeblob has a x-margin of 5mm from the edge. This value can be changed by overriding it the variable in your printer.cfg.
+By default the primeblob has a x-margin of 5 mm from the edge. This value can be changed by overriding it in the printer.cfg.
 ```
 [gcode_macro PRIME_BLOB]
 variable_x_offset: 5   # the prime blob x-margin 
