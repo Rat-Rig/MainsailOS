@@ -206,7 +206,7 @@ machine end gcode
 END_PRINT
 ```
 
-## Simplify 3D
+## Simplify 3D V5
 
 *Simplify 3D does not support RatRig IDEX printers.*
 
@@ -217,7 +217,7 @@ This is the ONLY gcode you need, delete everything else. Copy paste the followin
 Start GCode
 
 ```properties
-START_PRINT EXTRUDER_TEMP=[extruder0_temperature] BED_TEMP=[bed0_temperature]
+START_PRINT EXTRUDER_TEMP=[extruder0_temperature] BED_TEMP=[bed0_temperature] X0=[build_min_x] Y0=[build_min_y] X1=[build_max_x] Y1=[build_max_y]
 ```
 
 End GCode
@@ -237,7 +237,7 @@ This is the ONLY gcode you need, delete everything else. Copy paste the followin
 Start GCode
 
 ```properties
-START_PRINT EXTRUDER_TEMP={temperature_extruder1} BED_TEMP={temperature_heatbed}
+START_PRINT EXTRUDER_TEMP={temperature_extruder1} BED_TEMP={temperature_heatbed} X0={print_pos_min_x} Y0={print_pos_min_y} X1={print_pos_max_x} Y1={print_pos_max_y}
 ```
 
 End GCode
