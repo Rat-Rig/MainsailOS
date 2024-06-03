@@ -1,5 +1,15 @@
 # RatOS 2.1 with Beacon Contact 
 
+- [Prerequisites](#prerequisites)
+- [Initial calibration](#initial-calibration)
+- [First test](#first-test)
+- [Temperature expansion calibration](#temperature-expansion-calibration)
+- [RatOS configuration](#ratos-configuration)
+- [First print and fine tuning](#first-print-and-fine-tuning)
+- [Final calibration](#final-calibration)
+- [Measuring gantry twist](#measuring-gantry-twist)
+- [Measuring z-axis backlash](#measuring-z-axis-backlash)
+
 ### Prerequisites
 - update RatOS 2.1 via mainsail
 - read the official [beacon contact documentation](https://docs.beacon3d.com/contact/), but do not follow any installation instructions from there. 
@@ -65,7 +75,6 @@ RatOS | Beacon: T0 expansion coefficient: 0.075000
 This value is in mm and represents the thermal expansion for a temperature difference of 100°C. RatOS uses this value to calculate the needed offset and applies it automatically.
 
 The result will be saved automatically to the configuration file, there is no user action required.
-
 
 ### RatOS configuration
 The beacon contact feature is deactivated by default, enable it by copying this recommended configuration into your printer.cfg. 
