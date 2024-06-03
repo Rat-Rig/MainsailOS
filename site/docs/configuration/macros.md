@@ -6,6 +6,24 @@ sidebar_position: 1
 
 RatOS comes with a bunch of flexible predefined macro's that can be customized via variables and macro hooks.
 
+- [Variables](#variables)
+- [Relative Extrusion](#relative-extrusion)
+- [Absolute Position](#absolute-position)
+- [Speed](#speed)
+- [Homing](#homing)
+- [Heating](#heating)
+- [Bed Mesh Calibration](#bed-mesh-calibration)
+- [Nozzle Priming](#nozzle-priming)
+- [Filament loading/unloading](#filament-loadingunloading)
+- [Parking](#parking)
+- [Toolhead configuration](#toolhead-configuration)
+- [VAOC](#vaoc)
+- [IDEX](#idex)
+- [Beacon probe](#beacon-probe)
+- [Stowable probes](#stowable-probes)
+- [Skew profile](#skew-profile)
+- [User macro hooks](#user-macro-hooks)
+
 ## Variables
 
 In your printer.cfg at the top, you'll notice this:
@@ -74,7 +92,6 @@ Travel speed to use for gcode moves in RatOS Macro's in mm/s.
 | variable_sensorless_x_current | number                    | 0.4         | stepper driver run current for sensorless x-homing                                  |
 | variable_sensorless_y_current | number                    | 0.4         | stepper driver run current for sensorless y-homing                                  |
 
-
 ### Heating
 [gcode_macro RatOS]
 
@@ -83,7 +100,6 @@ Travel speed to use for gcode moves in RatOS Macro's in mm/s.
 | variable_preheat_extruder                  | True / False    | True    | Enables or disables preheating of the nozzle to 150 degrees during the START_PRINT macro. There are several benefits to preheating the nozzle. 1) Gives the bed additional time to diffuse the heat. 2) Softens plastic that may be stuck in the nozzle so it doesn't block your probe from triggering. 3) If using a non thermally compensated inductive probe, it makes the temperature and thus the offset of the probe more predictable and consistent. |
 | variable_start_print_heat_chamber_bed_temp | Number          | 115     | The bed temperature to use when heating the chamber when the `CHAMBER_TEMP` parameter is supplied to the `START_PRINT` macro.                                                                                                                                                                                                                                                                                                                               |
 | variable_preheat_extruder_temp             | Number          | 150     | The temperature to preheat the extruder to, to soften the material at the nozzle tip                                                                                                                                                                                                                                                                                                                                                                        |
-
 ### Bed Mesh Calibration
 [gcode_macro RatOS]
 
