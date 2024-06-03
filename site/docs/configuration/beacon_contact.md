@@ -105,7 +105,7 @@ For the scan method z-homing we should create a beacon model under real conditio
 
 - Run `SAVE_CONFIG` to save the model to your printer.cfg file.
 
-## Measuring gantry twist
+### Measuring gantry twist
 With the RatOS macro `BEACON_MEASURE_GANTRY_TWIST` you can automatically measure your gantry twist on multiple locations on the bed. It will home your printer and level the bed if needed. The result will be displayed after the test has finished. The command can throw a tolerance error, in this case just repeat it until the command gets successfully executed. 
 
 ```
