@@ -8,7 +8,7 @@ RatOS comes with it's own, deeply integrated and IDEX aware, adaptive meshing im
 
 ## Macro configuration
 
-Adaptive bed meshing is enalbed by default. To disable it set `variable_adaptive_mesh` to `False` in your printer.cfg file.
+Adaptive bed meshing is enabled by default. To disable it set `variable_adaptive_mesh` to `False` in your printer.cfg file.
 
 | Name                   | Possible Values | Default | Description                        |
 | ---------------------- | --------------- | ------- | ---------------------------------- |
