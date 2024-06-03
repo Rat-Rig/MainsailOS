@@ -3,7 +3,7 @@
 # Macros
 
 RatOS comes with START_PRINT and END_PRINT macros that you can call directly from your slicers. This way the printer knows how to start a print, and you can there easily switch between slicers without worrying if you changed anything in another slicer.
-The g-code for these macros are found in `config/printers/[PRINTER_NAME]/macros.cfg`
+The g-code for these macros are found in `config/RatOS/macros.cfg`
 
 ## Prusa Slicer 
 
