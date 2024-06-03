@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Adaptive Meshing
 
-RatOS comes with it's own, deeply integrated, adaptive meshing implementation. Do not try to set up the klipper variant of it. RatOS will only probe the print area and your configured probe location, potentially saving a lot of time on smaller prints on bigger printers. RatOS will keep the resolution of your mesh (probes per mm), so that you always get consistent mesh performance. Contrary to other implementations, RatOS doesn't move your prime location, instead it probes the prime location (constrained by min/max bed_mesh settings) a single time and uses the difference between the probe result and your z_offset to dynamically apply a gcode offset only for the prime macro. This ensures no collision with prime blob and the toolhead on small meshes.
+RatOS comes with it's own, deeply integrated and IDEX aware, adaptive meshing implementation. Do not try to set up the klipper variant of it, which works only in combination with the exclude_objects feature. RatOS will only probe the print area and your configured probe location, potentially saving a lot of time on smaller prints on bigger printers. RatOS will keep the resolution of your mesh (probes per mm), so that you always get consistent mesh performance. Contrary to other implementations, RatOS doesn't move your prime location, instead it probes the prime location (constrained by min/max bed_mesh settings) a single time and uses the difference between the probe result and your z_offset to dynamically apply a gcode offset only for the prime macro. This ensures no collision with prime blob and the toolhead on small meshes.
 
 ## Macro configuration
 
