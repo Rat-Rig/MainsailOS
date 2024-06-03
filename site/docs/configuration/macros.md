@@ -246,80 +246,84 @@ gcode:
 	SETUP_KAMP_MESHING
 ```
 
-### \_USER_START_PRINT_BEFORE_HOMING
+### Available user macro hooks
 
-Runs before the printer homes at the start of START_PRINT.
+- **\_USER_START_PRINT_BEFORE_HOMING**
 
-### \_USER_START_PRINT_HEAT_CHAMBER
+	Runs before the printer homes at the start of START_PRINT.
 
-Runs right after the chamber has started heating, if CHAMBER_TEMP is supplied to START_PRINT.
+- **\_USER_START_PRINT_HEAT_CHAMBER**
 
-### \_USER_START_PRINT_AFTER_HEATING_BED
+	Runs right after the chamber has started heating, if CHAMBER_TEMP is supplied to START_PRINT.
 
-Runs right after the bed has reached temp, before the internal \_START_PRINT_AFTER_HEATING_BED
+- **\_USER_START_PRINT_AFTER_HEATING_BED**
 
-### \_USER_START_PRINT_BED_MESH
+	Runs right after the bed has reached temp, before the internal \_START_PRINT_AFTER_HEATING_BED
 
-Runs before \_START_PRINT_BED_MESH
+- **\_USER_START_PRINT_BED_MESH**
 
-### \_USER_START_PRINT_PARK
+	Runs before \_START_PRINT_BED_MESH
 
-Runs before \_START_PRINT_PARK
+- **\_USER_START_PRINT_PARK**
 
-### \_USER_START_PRINT_AFTER_HEATING_EXTRUDER
+	Runs before \_START_PRINT_PARK
 
-Runs just before \_START_PRINT_AFTER_HEATING_EXTRUDER
+- **\_USER_START_PRINT_AFTER_HEATING_EXTRUDER**
 
-### \_USER_END_PRINT_BEFORE_HEATERS_OFF
+	Runs just before \_START_PRINT_AFTER_HEATING_EXTRUDER
 
-Runs before the heaters are turned off in END_PRINT
+- **\_USER_END_PRINT_BEFORE_HEATERS_OFF**
 
-### \_USER_END_PRINT_AFTER_HEATERS_OFF
+	Runs before the heaters are turned off in END_PRINT
 
-Runs after the heaters are turned off in END_PRINT
+- **\_USER_END_PRINT_AFTER_HEATERS_OFF**
 
-### \_USER_END_PRINT_PARK
+	Runs after the heaters are turned off in END_PRINT
 
-Runs before the toolhead is parked in END_PRINT
+- **\_USER_END_PRINT_PARK**
 
-### \_USER_START_PRINT
+	Runs before the toolhead is parked in END_PRINT
 
-Runs before the START_PRINT macro
+- **\_USER_START_PRINT**
 
-### \_USER_END_START_PRINT
+	Runs before the START_PRINT macro
 
-Runs after the START_PRINT macro
+- **\_USER_END_START_PRINT**
 
-### \_USER_START_FEATURE
+	Runs after the START_PRINT macro
 
-### \_USER_END_FEATURE
+- **\_USER_START_FEATURE**
+
+- **\_USER_END_FEATURE**
 
 ## Internal macro hooks
 
 These hooks are used internally, so if you override these be sure to copy paste the original implementation and modify that or you may break some functionality. Remember to check if there's an override in the printer's macro.cfg file, in which case that's the one you would copy.
 
-### \_START_PRINT_HEAT_CHAMBER
+### Available internal macro hooks
 
-Heats the chamber, if CHAMBER_TEMP is supplied to START_PRINT.
+- **\_START_PRINT_HEAT_CHAMBER**
 
-### \_START_PRINT_AFTER_HEATING_BED
+	Heats the chamber, if CHAMBER_TEMP is supplied to START_PRINT.
 
-Runs right after the bed has reached temp, after \_USER_START_PRINT_AFTER_HEATING_BED. It is usually used for additional bed calibration, such as Z_TILT_ADJUST or QUAD_GANTRY_LEVELING depending on the printer.
+- **\_START_PRINT_AFTER_HEATING_BED**
 
-### \_START_PRINT_BED_MESH
+	Runs right after the bed has reached temp, after \_USER_START_PRINT_AFTER_HEATING_BED. It is usually used for additional bed calibration, such as Z_TILT_ADJUST or QUAD_GANTRY_LEVELING depending on the printer.
 
-Handles bed meshing logic.
+- **\_START_PRINT_BED_MESH**
 
-### \_START_PRINT_PARK
+	Handles bed meshing logic.
 
-Parks the extruder while heating the nozzle to print temperature.
+- **\_START_PRINT_PARK**
 
-### \_START_PRINT_AFTER_HEATING_EXTRUDER
+	Parks the extruder while heating the nozzle to print temperature.
 
-Primes the nozzle and loads the skew profile if any is defined in the RatOS variables.
+- **\_START_PRINT_AFTER_HEATING_EXTRUDER**
 
-### \_END_PRINT_AFTER_HEATERS_OFF
+	Primes the nozzle and loads the skew profile if any is defined in the RatOS variables.
 
-Runs right after the heaters have been turned off in the END_PRINT macro.
+- **\_END_PRINT_AFTER_HEATERS_OFF**
+
+	Runs right after the heaters have been turned off in the END_PRINT macro.
 
 
