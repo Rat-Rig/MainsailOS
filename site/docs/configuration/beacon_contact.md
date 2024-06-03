@@ -8,7 +8,7 @@
 We need to create a intial beacon model to be able to home the printer. 
 - Run `_BEACON_INITIAL_CALIBRATION` 
 
-	It will home your printer and run the calibration fully automated. This command can throw a torleance error, in this case just repeat it until the command gets successfully completed. 
+	It will home your printer and run the calibration fully automated. This command can throw a tolerance error, in this case just repeat it until the command gets successfully completed. 
 
 	For safety and peace of mind, the LED will turn on as soon as the contact system determines it has a strong enough signal for detection. It should normally turn on up to 10mm in advance of the metal target, allowing enough time to manually estop the machine if necessary.
 
@@ -104,3 +104,18 @@ For the scan method z-homing we should create a beacon model under real conditio
 	Use your target bed temperature for the `BED_TEMP` parameter. It will home your printer and run the calibration fully automated.
 
 - Run `SAVE_CONFIG` to save the model to your printer.cfg file.
+
+## Measuring gantry twist
+With the RatOS macro `BEACON_MEASURE_GANTRY_TWIST` you can automatically measure your gantry twist on multiple locations on the bed. It will home your printer and level the bed if needed. The result will be displayed after the test has finished. The command can throw a tolerance error, in this case just repeat it until the command gets successfully executed. 
+
+```
+Gantry twist:
+Front left:    0.015022mm
+Front center:  0.013889mm
+Front right:   0.007666mm
+Left center:   0.000000mm
+Right center:  0.009345mm
+Back left:    -0.026518mm
+Back center:   0.027997mm
+Back right:    0.013992mm
+```
