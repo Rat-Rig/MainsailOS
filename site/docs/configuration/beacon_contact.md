@@ -6,7 +6,7 @@
 
 ### Initial calibration
 We need to create a intial beacon model to be able to home the printer. 
-- Run `_BEACON_INITIAL_CALIBRATION` 
+- Run `BEACON_INITIAL_CALIBRATION` 
 
 	It will home your printer and run the calibration fully automated. This command can throw a tolerance error, in this case just repeat it until the command gets successfully completed. 
 
@@ -15,7 +15,7 @@ We need to create a intial beacon model to be able to home the printer.
 - Run `SAVE_CONFIG` to save the model to your printer.cfg file.
 
 ### First test
-- Run `_BEACON_POKE_TEST`
+- Run `BEACON_POKE_TEST`
 
 	It will home your printer and poke the bed multiple times. After it check the console output, it should look like this: 
 ```
@@ -99,7 +99,7 @@ variable_beacon_contact_expansion_multiplier: 1.0        # multiplier for the no
 
 ### Final calibration
 For the scan method z-homing we should create a beacon model under real conditions. This is optional but recommended.
-- Run `_BEACON_FINAL_CALIBRATION BED_TEMP=85`
+- Run `BEACON_FINAL_CALIBRATION BED_TEMP=85`
 
 	Use your target bed temperature for the `BED_TEMP` parameter. It will home your printer and run the calibration fully automated.
 
