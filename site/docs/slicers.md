@@ -1,5 +1,13 @@
 # Slicer Configuration
 
+- [Prusa Slicer](#prusa-slicer)
+- [Super Slicer](#super-slicer)
+- [Orca Slicer](#orca-slicer)
+- [Cura](#cura)
+- [Simplify 3D V5](#simplify-3d-v5)
+- [IdeaMaker](#ideamaker)
+- [Slicer thumbnails](#slicer-thumbnails)
+
 # Macros
 
 RatOS comes with START_PRINT and END_PRINT macros that you can call directly from your slicers. This way the printer knows how to start a print, and you can there easily switch between slicers without worrying if you changed anything in another slicer.
