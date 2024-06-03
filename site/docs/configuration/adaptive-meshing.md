@@ -22,6 +22,6 @@ If you are currently using PAM, you should delete the PAM includes from printer.
 
 Make sure to setup your slicer according to the [official RatOS slicer configuration](../slicers.md).
 
-## Relative reference index
+## Zero reference position
 
-RatOS Adaptive Meshing currently doesn't modify the relative reference index, it's generally not advised to use relative reference index with adaptive meshing.
+RatOS Adaptive Meshing currently doesn't modify the zero reference position, it's generally not advised to set the zero reference position with adaptive meshing.
