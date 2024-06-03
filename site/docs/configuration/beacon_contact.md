@@ -119,3 +119,12 @@ Back left:    -0.026518mm
 Back center:   0.027997mm
 Back right:    0.013992mm
 ```
+
+### Measuring z-axis backlash
+With the beacon macro `BEACON_ESTIMATE_BACKLASH` you can measure the backlash of your setup. You need to home your printer and level your bed before using it.
+
+```
+Median distance moving up 1.99990, down 2.00286, delta 0.00296 over 20 samples
+```
+
+The delta value represents your backlash in mm.
