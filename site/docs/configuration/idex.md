@@ -38,9 +38,9 @@ Independent Dual Extrusion (IDEX) 3D printers offer versatile printing modes tha
 
 ## IDEX extras
 
-The RatOS IDEX implementation comes with a built in join spool and toolhead remapping feature.
+RatOS comes with a built in join spool and toolhead remapping feature.
 
-## JOIN_SPOOLS
+### JOIN_SPOOLS
 - **Parameters** `[SPOOLS]`
 
     The spool join feature can switch to another filament spool once a runout has been detected. This works only if you have a RatOS runout sensor configured according to the [official RatOS filament sensor documentation](filament_sensors.md). 
@@ -50,7 +50,7 @@ The RatOS IDEX implementation comes with a built in join spool and toolhead rema
 	To deactivate the feature click the `JOIN_SPOOLS` macro button without any parameter.
 	
 
-## REMAP_TOOLHEADS
+### REMAP_TOOLHEADS
 - **Parameters** `[TOOLHEADS]`
 
 	The toolhead remapping feature lets you swap the toolhead assignemnt.
