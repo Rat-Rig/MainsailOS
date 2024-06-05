@@ -69,6 +69,20 @@ Start filament GCode
 SET_PRESSURE_ADVANCE ADVANCE=0.05
 ```
 
+- Chamber temperature with Prusa Slicer
+
+    Unlike Super Slicer and Orca Slicer, Prusa Slicer doesnt come with a chamber temperature configuration option. There is a workarround, but it works only if the filament profile notes are empty and not used otherwise.
+
+    - in your filament profile notes enter `CHAMBER_TEMP=50`
+    - add `{filament_notes[current_extruder]}` to the end of your printer start gcode.
+
+    This isnt a ideal solution but it lets you pass the chamber temperature to the START_PRINT macro based on your filament profiles.
+
+    Another option is to to hardcode the CHAMBER_TEMP parameter directly into the printer start gcode. In this case the parameters will be activated for every print, no matter which filament profile you use.
+
+    - add `CHAMBER_TEMP=50` to the end of your printer start gcode.
+
+
 ## Super Slicer
 
 *Super Slicer comes with full IDEX support.*
