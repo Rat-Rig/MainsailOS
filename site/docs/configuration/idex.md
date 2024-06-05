@@ -1,4 +1,4 @@
-# RatOS 2.1 Calibration Macros
+# RatOS 2.1 IDEX Macros
 
 - [IDEX_SINGLE]()
 - [IDEX_COPY]()
@@ -23,6 +23,10 @@ Independent Dual Extrusion (IDEX) 3D printers offer versatile printing modes tha
 ### IDEX_MIRROR
 
 - Mirrors your model and prints both the original and its mirror image in one go.
+
+### IDEX_PARK
+
+- Moves the current active toolhead to its parking position.
 
 
 ## IDEX extras
