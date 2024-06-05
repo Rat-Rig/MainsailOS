@@ -54,3 +54,17 @@ gcode:
 	# replace MY_LED_NAME with the name you choosed for the custom LED
 	SET_LED LED="MY_LED_NAME" RED={r} GREEN={g} BLUE={b} SYNC=0 
 ```
+
+## Changing status colors
+
+Status colors are stored as RGB values in these RatOS variables. Override them in your printer.cfg file to change them.
+
+```
+[gcode_macro RatOS]
+variable_led_status_action:    0.0, 1.0, 1.0
+variable_led_status_success:   0.0, 1.0, 0.0
+variable_led_status_error:     1.0, 0.0, 1.0
+variable_led_status_on:        1.0, 1.0, 1.0
+variable_led_status_off:       0.0, 0.0, 1.0
+variable_led_status_standby:   0.1, 0.1, 0.1
+```
