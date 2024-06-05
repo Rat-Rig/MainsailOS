@@ -111,6 +111,7 @@ For the scan method z-homing we should create a beacon model under real conditio
 - Run `BEACON_FINAL_CALIBRATION BED_TEMP=85`
 
 	Use your target bed temperature for the `BED_TEMP` parameter. It will home your printer and run the calibration fully automated.
+	In case you have a chamber heater it is recommended to heat it up to your target temperature before starting the test.
 
 - Run `SAVE_CONFIG` to save the model to your printer.cfg file.
 
