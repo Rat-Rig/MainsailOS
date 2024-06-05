@@ -44,10 +44,10 @@ RatOS comes with a simple way to get high precise 3 digits PA values for your fi
 	`FACTOR` = The PA value change per millimeter.  Default is 0.001.
 
 	**How to use it.**
-	- Place a 50x50mm square on your buildplate and make it 100mm height.
+	- Place a 50x50mm cube on your buildplate and make it 100mm height.
 	- Use 2 or 3 perimeters and little infill.
 	- Print with your target printing profile, do not change anything.
-	- After it starts to print the first layer run the `INITIALIZE_PA_TUNING` macro with its default values.
+	- When the first layer starts run the `INITIALIZE_PA_TUNING` macro with its default values.
 	- Measure with a caliper form the bottom of the print to the best corner quality of the print.
 	- if the value is 45.5mm then yor new PA value is 0.0455.
 
