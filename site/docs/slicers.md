@@ -21,6 +21,13 @@ The g-code for these macros are found in `config/RatOS/macros.cfg`
 This is the ONLY gcode you need, delete everything else. Copy paste the following **as is**.
 :::
 
+### Configuration
+
+- Select `Klipper` in Printer Settings -> General -> Firmware -> G-code Flavor
+- Enable `Use relative E distances` in Printer Settings -> General -> Advanced
+
+### GCode Settings
+
 Start GCode for single toolhead printers
 
 ```properties
@@ -69,18 +76,18 @@ Start filament GCode
 SET_PRESSURE_ADVANCE ADVANCE=0.05
 ```
 
-- Chamber temperature with Prusa Slicer
+### Chamber temperature with Prusa Slicer
 
-    Unlike Super Slicer and Orca Slicer, Prusa Slicer doesnt come with a chamber temperature configuration option. There is a workarround, but it works only if the filament profile notes are empty and not used otherwise.
+Unlike Super Slicer and Orca Slicer, Prusa Slicer doesnt come with a chamber temperature configuration option. There is a workarround, but it works only if the filament profile notes are empty and not used otherwise.
 
-    - in your filament profile notes enter `CHAMBER_TEMP=50`
-    - add `{filament_notes[current_extruder]}` to the end of your printer start gcode.
+- in your filament profile notes enter `CHAMBER_TEMP=50`
+- add `{filament_notes[current_extruder]}` to the end of your printer start gcode.
 
-    This isnt a ideal solution but it lets you pass the chamber temperature to the START_PRINT macro based on your filament profiles.
+This isnt a ideal solution but it lets you pass the chamber temperature to the START_PRINT macro based on your filament profiles.
 
-    Another option is to to hardcode the CHAMBER_TEMP parameter directly into the printer start gcode. In this case the parameters will be activated for every print, no matter which filament profile you use.
+Another option is to to hardcode the CHAMBER_TEMP parameter directly into the printer start gcode. In this case the parameters will be activated for every print, no matter which filament profile you use.
 
-    - add `CHAMBER_TEMP=50` to the end of your printer start gcode.
+- add `CHAMBER_TEMP=50` to the end of your printer start gcode.
 
 
 ## Super Slicer
@@ -90,9 +97,18 @@ SET_PRESSURE_ADVANCE ADVANCE=0.05
 :::info
 You should be using "Klipper" as the gcode flavor and have the "Only custom Start G-Code" box checked in Printer Settings -> Custom G-Code
 :::
+
 :::info
 This is the ONLY gcode you need, delete everything else. Copy paste the following **as is**.
 :::
+
+### Configuration
+
+- Select `Klipper` in Printer Settings -> General -> Firmware -> G-code Flavor
+- Enable `Use relative E distances` in Printer Settings -> General -> Advanced
+- Enable `Only custom Start G-Code` in Printer Settings -> Custom G-Code
+
+### GCode Settings
 
 Start GCode for single toolhead printers
 
@@ -154,6 +170,13 @@ SET_PRESSURE_ADVANCE ADVANCE=0.05
 :::info
 Make sure to set the GCode flavor to klipper
 :::
+
+### Configuration
+
+- Select `Klipper` in Printer Settings -> Advanced -> G-code Flavor
+- Enable `Use relative E distances` in Printer Settings -> Advanced
+
+### GCode Settings
 
 Start GCode for single toolhead printers
 
