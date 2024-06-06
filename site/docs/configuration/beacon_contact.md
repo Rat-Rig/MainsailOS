@@ -77,7 +77,7 @@ This value is in mm and represents the thermal expansion for a temperature diffe
 The result will be saved automatically to the configuration file, there is no user action required.
 
 ## RatOS configuration
-The beacon contact feature is deactivated by default, enable it by copying this recommended configuration into your printer.cfg. 
+The beacon contact feature is activated by default, you dont need to do anything. But you can override the settings to enable more beacon contact features if wanted. 
 ```
 #####
 # Beacon probe configuration
