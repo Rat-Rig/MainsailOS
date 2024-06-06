@@ -18,6 +18,10 @@ The g-code for these macros are found in `config/RatOS/macros.cfg`
 *Prusa Slicer comes with full IDEX support and is the recommended slicer for all RatRig printers.*
 
 :::info
+You should be using "Klipper" as the gcode flavor and have the "Use relative E distances" box checked in Printer Settings -> General -> Advanced.
+:::
+
+:::info
 This is the ONLY gcode you need, delete everything else. Copy paste the following **as is**.
 :::
 
@@ -99,6 +103,10 @@ You should be using "Klipper" as the gcode flavor and have the "Only custom Star
 :::
 
 :::info
+You should be using "Klipper" as the gcode flavor and have the "Only custom Start G-Code" box checked in Printer Settings -> Custom G-Code and "Use relative E distances" box checked in Printer Settings -> General -> Advanced.
+:::
+
+:::info
 This is the ONLY gcode you need, delete everything else. Copy paste the following **as is**.
 :::
 
@@ -172,7 +180,11 @@ SET_PRESSURE_ADVANCE ADVANCE=0.05
 *Orca Slicer comes with partial IDEX support only. It lacks multi extruder support. You cant for example assign one extruder to print supports or infill.*
 
 :::info
-Make sure to set the GCode flavor to klipper
+You should be using "Klipper" as the gcode flavor and have the "Use relative E distances" box checked in in Printer Settings -> Advance.
+:::
+
+:::info
+This is the ONLY gcode you need, delete everything else. Copy paste the following **as is**.
 :::
 
 ### Configuration
