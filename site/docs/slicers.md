@@ -30,6 +30,11 @@ This is the ONLY gcode you need, delete everything else. Copy paste the followin
 - Select `Klipper` in Printer Settings -> General -> Firmware -> G-code Flavor
 - Enable `Use relative E distances` in Printer Settings -> General -> Advanced
 
+### Additional IDEX Configuration
+
+- Select `2` in Printer Settings -> General -> Capabilities -> Extruder
+- Disable `Single Extruder Multi Material` in Printer Settings -> General -> Capabilities
+
 ### GCode Settings
 
 Start GCode for single toolhead printers
@@ -112,6 +117,11 @@ This is the ONLY gcode you need, delete everything else. Copy paste the followin
 - Enable `Use relative E distances` in Printer Settings -> General -> Advanced
 - Enable `Only custom Start G-Code` in Printer Settings -> Custom G-Code
 
+### Additional IDEX Configuration
+
+- Select `2` in Printer Settings -> General -> Capabilities -> Extruder
+- Disable `Single Extruder Multi Material` in Printer Settings -> General -> Capabilities
+
 ### GCode Settings
 
 Start GCode for single toolhead printers
@@ -189,6 +199,10 @@ This is the ONLY gcode you need, delete everything else. Copy paste the followin
 
 - Select `Klipper` in Printer Settings -> Advanced -> G-code Flavor
 - Enable `Use relative E distances` in Printer Settings -> Advanced
+
+### Additional IDEX Configuration
+
+- Add a secondary Filament in Main UI -> Filament
 
 ### GCode Settings
 
