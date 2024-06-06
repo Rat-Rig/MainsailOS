@@ -99,10 +99,6 @@ Another option is to to hardcode the CHAMBER_TEMP parameter directly into the pr
 *Super Slicer comes with full IDEX support.*
 
 :::info
-You should be using "Klipper" as the gcode flavor and have the "Only custom Start G-Code" box checked in Printer Settings -> Custom G-Code
-:::
-
-:::info
 You should be using "Klipper" as the gcode flavor and have the "Only custom Start G-Code" box checked in Printer Settings -> Custom G-Code and "Use relative E distances" box checked in Printer Settings -> General -> Advanced.
 :::
 
