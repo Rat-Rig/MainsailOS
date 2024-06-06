@@ -62,7 +62,7 @@ RatOS comes with a built in temperature expansion calibration and compensation.
 **IDEX printer**
 - Start VAOC
 - Center both nozzles over the camera
-- run `_VAOC_CALIBRATE_TEMP_OFFSET`
+- Click the `Calibrate Thermal Expansion` button in VAOC
 
 	It calibrates both nozzles fully automated. This will take some time.
 
