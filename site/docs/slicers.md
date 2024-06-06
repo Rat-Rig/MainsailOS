@@ -13,7 +13,7 @@
 RatOS comes with START_PRINT and END_PRINT macros that you can call directly from your slicers. This way the printer knows how to start a print, and you can there easily switch between slicers without worrying if you changed anything in another slicer.
 The g-code for these macros are found in `config/RatOS/macros.cfg`
 
-## Prusa Slicer 
+# Prusa Slicer 
 
 *Prusa Slicer comes with full IDEX support and is the recommended slicer for all RatRig printers.*
 
@@ -94,7 +94,7 @@ Another option is to to hardcode the CHAMBER_TEMP parameter directly into the pr
 - add `CHAMBER_TEMP=50` to the end of your printer start gcode.
 
 
-## Super Slicer
+# Super Slicer
 
 *Super Slicer comes with full IDEX support.*
 
@@ -172,7 +172,7 @@ Start filament GCode
 SET_PRESSURE_ADVANCE ADVANCE=0.05
 ```
 
-## Orca Slicer
+# Orca Slicer
 
 *Orca Slicer comes with partial IDEX support only. It lacks multi extruder support. You cant for example assign one extruder to print supports or infill.*
 
@@ -244,7 +244,7 @@ Filament start GCode
 ; Filament gcode
 ```
 
-## Cura
+# Cura
 
 *Cura does not support RatRig IDEX printers.*
 
@@ -318,7 +318,7 @@ class MeshPrintSize(Script):
 3. restart cura
 4. in cura open menu `Extensions -> Post processing -> Modify G-Code` and select `Mesh Print Size`
 
-## Simplify 3D V5
+# Simplify 3D V5
 
 *Simplify 3D does not support RatRig IDEX printers.*
 
@@ -338,7 +338,7 @@ End GCode
 END_PRINT
 ```
 
-## IdeaMaker
+# IdeaMaker
 
 *IdeaMaker does not support RatRig IDEX printers.*
 
@@ -362,6 +362,6 @@ END_PRINT
 IdeaMaker will complain there's no heating commands, you can safely ignore this.
 :::
 
-## Slicer thumbnails
+# Slicer thumbnails
 
 See the Mainsail documentation: [G-Code Thumbnails in Mainsail](https://docs.mainsail.xyz/overview/features/thumbnails)
