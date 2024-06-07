@@ -30,7 +30,7 @@ initial_GREEN: 1.0
 initial_BLUE: 1.0
 
 [neopixel nozzle_led_t1]
-pin: toolboard_t0:PD3
+pin: toolboard_t1:PD3
 chain_count: 3
 color_order: GRB
 initial_RED: 1.0
