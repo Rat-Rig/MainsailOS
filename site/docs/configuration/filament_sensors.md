@@ -90,7 +90,7 @@ press_gcode:
 [filament_switch_sensor toolhead_filament_sensor_t0]
 pause_on_runout: False
 event_delay: 0.1
-switch_pin: ^!toolboard_t0:PB3
+switch_pin: ^toolboard_t0:PB3
 runout_gcode: 
     _ON_TOOLHEAD_FILAMENT_SENSOR_RUNOUT TOOLHEAD=0
 insert_gcode: 
