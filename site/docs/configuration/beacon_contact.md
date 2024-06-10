@@ -1,20 +1,19 @@
 # RatOS 2.1 with Beacon Contact 
 
 - [Prerequisites](#prerequisites)
-- [Initial calibration](#initial-calibration)
-- [First test](#first-test)
-- [Temperature expansion calibration](#temperature-expansion-calibration)
-- [RatOS configuration](#ratos-configuration)
-- [First print and fine tuning](#first-print-and-fine-tuning)
-- [Final calibration](#final-calibration)
-- [Measuring gantry twist](#measuring-gantry-twist)
-- [Measuring z-axis backlash](#measuring-z-axis-backlash)
+- [Initial calibration](#1-initial-calibration)
+- [First test](#2-beacon-latency-check)
+- [Temperature expansion calibration](#3-temperature-expansion-calibration)
+- [Final calibration](#4-final-calibration)
+- [First print and fine tuning](#5-first-print-and-fine-tuning)
+- [RatOS configuration](#6-ratos-configuration)
+- [Beacon Tools](#7-tools)
 
 ## Prerequisites
 - update RatOS 2.1 via mainsail
 - read the official [beacon contact documentation](https://docs.beacon3d.com/contact/), but do not follow any installation instructions from there. 
 
-## Initial calibration
+## 1. Initial calibration
 We need to create a intial beacon model to be able to home the printer. 
 - Run `BEACON_INITIAL_CALIBRATION` 
 
@@ -24,7 +23,8 @@ We need to create a intial beacon model to be able to home the printer.
 
 - Run `SAVE_CONFIG` to save the model to your printer.cfg file.
 
-## First test
+## 2. Beacon latency check
+This test will show you the quality of your beacon probing. 
 - Run `BEACON_POKE_TEST`
 
 	It will home your printer and poke the bed multiple times. After it check the console output, it should look like this: 
@@ -45,7 +45,7 @@ Compare your latency values with the following list.
 | 7-9	| Not ideal, may want to verify proper mounting or use thinner stackups
 | 10-11	| Reason for concern, present setup may be risky to continue with
 
-## Temperature expansion calibration
+## 3. Temperature expansion calibration
 RatOS comes with a built in temperature expansion calibration and compensation.
 
 **Preparation**
@@ -76,7 +76,20 @@ This value is in mm and represents the thermal expansion for a temperature diffe
 
 The result will be saved automatically to the configuration file, there is no user action required.
 
-## RatOS configuration
+## 4. Final calibration
+For the scan method z-homing we should create a beacon model under real conditions. This is optional but recommended.
+- Run `BEACON_FINAL_CALIBRATION BED_TEMP=85`
+
+	Use your target bed temperature for the `BED_TEMP` parameter. It will home your printer and run the calibration fully automated.
+	In case you have a chamber heater it is recommended to heat it up to your target temperature before starting the test.
+
+- Run `SAVE_CONFIG` to save the model to your printer.cfg file.
+
+## 5. First print and fine tuning
+- Print a 50x50mm one layer thick square in the middle of the buildplate. 
+- Use the `beacon_contact_expansion_multiplier` variable to fine tune your first layer squish. Higher value means less squish and lower value means more squish. 1.1 = a bit less squish, 0.9 = a bit more squish, ....
+
+## 6. RatOS configuration
 The beacon contact feature is activated by default, you dont need to do anything. But you can override the settings to enable more beacon contact features if wanted. 
 ```
 #####
@@ -102,20 +115,9 @@ variable_beacon_contact_expansion_compensation: True     # enables the nozzle th
 variable_beacon_contact_expansion_multiplier: 1.0        # multiplier for the nozzle thermal expansion compensation
 ```
 
-## First print and fine tuning
-- Print a 50x50mm one layer thick square in the middle of the buildplate. 
-- Use the `beacon_contact_expansion_multiplier` variable to fine tune your first layer squish. Higher value means less squish and lower value means more squish. 1.1 = a bit less squish, 0.9 = a bit more squish, ....
+## 7. Tools
 
-## Final calibration
-For the scan method z-homing we should create a beacon model under real conditions. This is optional but recommended.
-- Run `BEACON_FINAL_CALIBRATION BED_TEMP=85`
-
-	Use your target bed temperature for the `BED_TEMP` parameter. It will home your printer and run the calibration fully automated.
-	In case you have a chamber heater it is recommended to heat it up to your target temperature before starting the test.
-
-- Run `SAVE_CONFIG` to save the model to your printer.cfg file.
-
-## Measuring gantry twist
+### Measuring gantry twist
 With the RatOS macro `BEACON_MEASURE_GANTRY_TWIST` you can automatically measure your gantry twist on multiple locations on the bed. It will home your printer and level the bed if needed. The result will be displayed after the test has finished. The command can throw a tolerance error, in this case just repeat it until the command gets successfully executed. 
 
 ```
@@ -130,7 +132,7 @@ Back center:   0.027997mm
 Back right:    0.013992mm
 ```
 
-## Measuring z-axis backlash
+### Measuring z-axis backlash
 With the beacon macro `BEACON_ESTIMATE_BACKLASH` you can measure the backlash of your setup. You need to home your printer and level your bed before using it.
 
 ```
