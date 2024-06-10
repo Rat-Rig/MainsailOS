@@ -87,7 +87,7 @@ For the scan method z-homing we should create a beacon model under real conditio
 
 ## 5. First print and fine tuning
 - Print a 50x50mm one layer thick square in the middle of the buildplate. 
-- Use the `beacon_contact_expansion_multiplier` variable to fine tune your first layer squish. Higher value means less squish and lower value means more squish. 1.1 = a bit less squish, 0.9 = a bit more squish, ....
+- Override the `beacon_contact_expansion_multiplier` [from here](#6-ratos-configuration) to fine tune your first layer squish. Higher value means less squish and lower value means more squish. 1.1 = a bit less squish, 0.9 = a bit more squish, ....
 
 ## 6. RatOS configuration
 The beacon contact feature is activated by default, you dont need to do anything. But you can override the settings to enable more beacon contact features if wanted. 
