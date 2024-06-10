@@ -165,6 +165,13 @@ variable_retract: 1.5   # retract on pause print
 variable_extrude: 1.5   # extrude before resume print
 ```
 
+### Parking Position
+```
+[gcode_macro RatOS]
+variable_runout_park_in: "front"   # back|front|center = gantry parking position if a runout or clog has been detected
+variable_runout_park_x: 50         # float = if configured the x position of the toolhead. if not configured it will park in the middle
+```
+
 ### Advanced
 ```
 [gcode_macro T0]
