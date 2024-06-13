@@ -26,7 +26,7 @@ variable_chamber_filter_disable_bed_temp: 0              # int = wait for X°C b
 To support more usecases the chamber fitler controls comes with two macro hooks that can be overwritten. 
 
 ```
-[delayed_gcode _CHAMBER_FILTER_TURN_ON]
+[gcode_macro _CHAMBER_FILTER_TURN_ON]
 gcode:
 	# config
 	{% set chamber_filter_speed = printer["gcode_macro RatOS"].chamber_filter_speed|default(0)|float %}
@@ -36,7 +36,7 @@ gcode:
 ```
 
 ```
-[delayed_gcode _CHAMBER_FILTER_TURN_OFF]
+[gcode_macro _CHAMBER_FILTER_TURN_OFF]
 gcode:
 	# turn filter fan off
 	SET_FAN_SPEED FAN=filter SPEED=0
