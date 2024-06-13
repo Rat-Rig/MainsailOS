@@ -9,7 +9,7 @@ To be able to use the chamber control feature you just need to configure a gener
 [fan_generic filter]
 ```
 
-## RatOS Configuration
+## Configuration
 
 The feature is activated by default, you dont need to do anything. But you can override the settings in your printer.cfg if wanted. 
 ```
@@ -21,7 +21,7 @@ variable_chamber_filter_disable_period: 300              # int = disable fan aft
 variable_chamber_filter_disable_bed_temp: 0              # int = wait for X°C bed temp after the print ends before disabling the filter
 ```
 
-## Chamber filter macro hooks
+## Macro hooks
 
 To support more usecases the chamber fitler controls comes with two macro hooks that can be overwritten. 
 
