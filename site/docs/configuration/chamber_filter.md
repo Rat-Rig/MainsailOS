@@ -20,3 +20,24 @@ variable_chamber_filter_enable_at: "after_print_start"   # before_print_start|af
 variable_chamber_filter_disable_period: 300              # int = disable fan after X seconds after the print ends
 variable_chamber_filter_disable_bed_temp: 0              # int = wait for X°C bed temp after the print ends before disabling the filter
 ```
+
+## Chamber filter macro hooks
+
+To support more usecases the chamber fitler controls comes with two macro hooks that can be overwritten. 
+
+```
+[delayed_gcode _CHAMBER_FILTER_TURN_ON]
+gcode:
+	# config
+	{% set chamber_filter_speed = printer["gcode_macro RatOS"].chamber_filter_speed|default(0)|float %}
+
+	# turn filter fan on
+	SET_FAN_SPEED FAN=filter SPEED={chamber_filter_speed}
+```
+
+```
+[delayed_gcode _CHAMBER_FILTER_TURN_OFF]
+gcode:
+	# turn filter fan off
+	SET_FAN_SPEED FAN=filter SPEED=0
+```
