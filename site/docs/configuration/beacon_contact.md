@@ -1,7 +1,7 @@
 # RatOS 2.1 with Beacon Contact 
 
 - [Prerequisites](#prerequisites)
-
+- [Fully automated RatOS Beacon calibration](#fully-automated-ratos-beacon-calibration)
 - [Initial calibration](#1-initial-calibration)
 - [First test](#2-beacon-latency-check)
 - [Temperature expansion calibration](#3-temperature-expansion-calibration)
