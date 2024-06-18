@@ -99,8 +99,9 @@ For the scan method z-homing we should create a beacon model under real conditio
 - Run `SAVE_CONFIG` to save the model to your printer.cfg file.
 
 ## 5. First print and fine tuning
-- Print a 50x50mm one layer thick square in the middle of the buildplate. 
-- Override the `beacon_contact_expansion_multiplier` [from here](#6-ratos-configuration) to fine tune your first layer squish. Higher value means less squish and lower value means more squish. 1.1 = a bit less squish, 0.9 = a bit more squish, ....
+- Print a 150x30mm one layer thick rectangle in the middle of the buildplate.
+- While printing fintune with babystepping
+- After babystepping is done, but still while printing, run `BEACON_APPLY_MULTIPLIER` to save the changes. 
 
 ## 6. RatOS configuration
 The beacon contact feature is activated by default, you dont need to do anything. But you can override the settings to enable more beacon contact features if wanted. Just copy and paste this complete block to your printer.cfg file and make the changes there.
@@ -125,7 +126,6 @@ variable_beacon_contact_z_tilt_adjust_samples: 2         # probe samples for con
 variable_beacon_contact_prime_probing: True              # probe for priming with contact method
 variable_beacon_contact_calibration_temp: 150            # nozzle temperature for auto calibration
 variable_beacon_contact_expansion_compensation: True     # enables the nozzle thermal expansion compensation
-variable_beacon_contact_expansion_multiplier: 1.0        # multiplier for the nozzle thermal expansion compensation
 ```
 
 ## 7. Tools
