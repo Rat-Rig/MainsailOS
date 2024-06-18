@@ -1,6 +1,7 @@
 # RatOS 2.1 with Beacon Contact 
 
 - [Prerequisites](#prerequisites)
+
 - [Initial calibration](#1-initial-calibration)
 - [First test](#2-beacon-latency-check)
 - [Temperature expansion calibration](#3-temperature-expansion-calibration)
@@ -12,6 +13,18 @@
 ## Prerequisites
 - update RatOS 2.1 via mainsail
 - read the official [beacon contact documentation](https://docs.beacon3d.com/contact/), but do not follow any installation instructions from there. 
+
+## Fully automated RatOS Beacon calibration
+Ratos comes with a fully automated beacon model and temperature offset calibration. 
+- Run `BEACON_RATOS_CALIBRATION` 
+
+	The automated beacon calibration will run the following calibrations and tests, which can also be used individually. Please make sure to read every section before starting the calibration.
+	- [Initial calibration](#1-initial-calibration)
+	- [First test](#2-beacon-latency-check)
+	- [Temperature expansion calibration](#3-temperature-expansion-calibration) (for non IDEX printer)
+	- [Final calibration](#4-final-calibration)
+	
+	All calibration results will be saved automatically, there is no user action required.
 
 ## 1. Initial calibration
 We need to create a intial beacon model to be able to home the printer. 
