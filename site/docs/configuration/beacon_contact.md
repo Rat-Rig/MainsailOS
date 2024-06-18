@@ -16,7 +16,7 @@
 
 ## Fully automated RatOS Beacon calibration
 Ratos comes with a fully automated beacon model and temperature offset calibration. 
-- Run `BEACON_RATOS_CALIBRATION` 
+- Run `BEACON_RATOS_CALIBRATION BED_TEMP=85` 
 
 	The automated beacon calibration will run the following calibrations and tests, which can also be used individually. Please make sure to read every section before starting the calibration.
 	- [Initial calibration](#1-initial-calibration)
