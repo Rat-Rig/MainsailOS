@@ -103,7 +103,7 @@ For the scan method z-homing we should create a beacon model under real conditio
 - Override the `beacon_contact_expansion_multiplier` [from here](#6-ratos-configuration) to fine tune your first layer squish. Higher value means less squish and lower value means more squish. 1.1 = a bit less squish, 0.9 = a bit more squish, ....
 
 ## 6. RatOS configuration
-The beacon contact feature is activated by default, you dont need to do anything. But you can override the settings to enable more beacon contact features if wanted. 
+The beacon contact feature is activated by default, you dont need to do anything. But you can override the settings to enable more beacon contact features if wanted. Just copy and paste this complete block to your printer.cfg file and make the changes there.
 ```
 #####
 # Beacon probe configuration
