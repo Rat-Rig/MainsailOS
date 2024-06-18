@@ -3,7 +3,7 @@
 - [Prerequisites](#prerequisites)
 - [Fully automated RatOS Beacon calibration](#fully-automated-ratos-beacon-calibration)
 - [Initial calibration](#1-initial-calibration)
-- [First test](#2-beacon-latency-check)
+- [Beacon latency check](#2-beacon-latency-check)
 - [Temperature expansion calibration](#3-temperature-expansion-calibration)
 - [Final calibration](#4-final-calibration)
 - [First print and fine tuning](#5-first-print-and-fine-tuning)
@@ -20,7 +20,7 @@ Ratos comes with a fully automated beacon model and temperature offset calibrati
 
 	The automated beacon calibration will run the following calibrations and tests, which can also be used individually. Please make sure to read every section before starting the calibration.
 	- [Initial calibration](#1-initial-calibration)
-	- [First test](#2-beacon-latency-check)
+	- [Beacon latency check](#2-beacon-latency-check)
 	- [Temperature expansion calibration](#3-temperature-expansion-calibration) (for non IDEX printer)
 	- [Final calibration](#4-final-calibration)
 	
