@@ -23,6 +23,7 @@ You should be using "Klipper" as the gcode flavor and have the "Use relative E d
 
 :::info
 This is the ONLY gcode you need, delete everything else. Copy paste the following **as is**.
+Make sure the box labeled "Emit temperature commands automatically" is **unchecked** under "Start G-Code options".
 :::
 
 ### Configuration
@@ -39,11 +40,19 @@ This is the ONLY gcode you need, delete everything else. Copy paste the followin
 
 Start GCode for single toolhead printers
 
+:::info
+Make sure the box labeled "Emit temperature commands automatically" is **unchecked** under "Start G-Code options".
+:::
+
 ```properties
 START_PRINT EXTRUDER_TEMP={first_layer_temperature[0]} EXTRUDER_OTHER_LAYER_TEMP={temperature[0]} BED_TEMP=[first_layer_bed_temperature] TOTAL_LAYER_COUNT={total_layer_count} X0={first_layer_print_min[0]} Y0={first_layer_print_min[1]} X1={first_layer_print_max[0]} Y1={first_layer_print_max[1]}
 ```
 
 Start GCode for IDEX printers
+
+:::info
+Make sure the box labeled "Emit temperature commands automatically" is **unchecked** under "Start G-Code options".
+:::
 
 ```properties
 START_PRINT EXTRUDER_TEMP={first_layer_temperature[0]},{first_layer_temperature[1]} EXTRUDER_OTHER_LAYER_TEMP={temperature[0]},{temperature[1]} BED_TEMP=[first_layer_bed_temperature] INITIAL_TOOL={initial_tool} TOTAL_LAYER_COUNT={total_layer_count} X0={first_layer_print_min[0]} Y0={first_layer_print_min[1]} X1={first_layer_print_max[0]} Y1={first_layer_print_max[1]}
