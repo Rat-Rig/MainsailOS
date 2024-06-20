@@ -100,8 +100,8 @@ For the scan method z-homing we should create a beacon model under real conditio
 
 ## 5. First print and fine tuning
 - Print a 150x30mm one layer thick rectangle in the middle of the buildplate.
-- While printing fintune with babystepping
-- After babystepping is done, but still while printing, run `SAVE_Z_OFFSET` to save the changes. 
+- While printing finetune with babystepping.
+- Run `SAVE_Z_OFFSET` to save the changes. 
 
 ## 6. RatOS configuration
 The beacon contact feature is activated by default, you dont need to do anything. But you can override the settings to enable more beacon contact features if wanted. Just copy and paste this complete block to your printer.cfg file and make the changes there.
