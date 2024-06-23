@@ -49,7 +49,7 @@ heater_temp: 40
 ```
 
 ## 3. External heater device control
-A dedicated heater device that can be switched on/off by a output pin and a chamber thermistor to control the chamber temperature. 
+A dedicated heater device with its own temperature control that can be switched on/off by a relais/output_pin and a chamber thermistor to control the chamber initial chamber temperature. 
 
 ### Configuration
 
