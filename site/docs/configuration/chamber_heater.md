@@ -20,6 +20,9 @@ A pwm controlled chamber heater, a heater fan and a chamber thermistor to contro
 
 Make sure to name your devices after this example configuration. 
 ```
+[gcode_macro RatOS]
+variable_chamber_heater_type: "generic_heater"
+
 [temperature_sensor chamber]
 sensor_type: ATC Semitec 104GT-2
 sensor_pin: PF4
@@ -52,6 +55,9 @@ A dedicated heater device that can be switched on/off by a output pin and a cham
 
 Make sure to name your devices after this example configuration. 
 ```
+[gcode_macro RatOS]
+variable_chamber_heater_type: "output_pin"
+
 [temperature_sensor chamber]
 sensor_type: ATC Semitec 104GT-2
 sensor_pin: PF4
