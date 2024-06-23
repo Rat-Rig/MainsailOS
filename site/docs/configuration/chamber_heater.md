@@ -63,7 +63,6 @@ pin: PE14
 
 ### RatOS Configuration
 
-The feature is activated by default, you dont need to do anything. But you can override the settings in your printer.cfg if wanted. 
 ```
 [gcode_macro RatOS]
 variable_chamber_heater_enable: True                      # True|False = enable chamber heater control
