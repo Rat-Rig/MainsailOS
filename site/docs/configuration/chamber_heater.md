@@ -73,6 +73,7 @@ pin: PE14
 [gcode_macro RatOS]
 variable_chamber_heater_enable: True                      # True|False = enable chamber heater control
 variable_chamber_heater_type: "hotend"                    # generic_heater|output_pin|hotend = type of heater control
+variable_chamber_heater_bed_temp: 115                     # int = bed temperature during chamber preheating
 variable_chamber_heater_preheating_temp: 150              # int = the temp the generic_heater is set to when preheating the chamber
 variable_chamber_heater_heating_temp_offset: 25           # int = the temp offset for the generic_heater, in addition to the target chamber_temp, while printing
 variable_chamber_heater_air_circulation_enable: True      # True|False = uses the part cooling to blow air from the top of the chamber to the bottom when preheating the chamber
