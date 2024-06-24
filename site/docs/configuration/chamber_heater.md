@@ -62,7 +62,6 @@ variable_chamber_heater_type: "output_pin"
 sensor_type: ATC Semitec 104GT-2
 sensor_pin: PF4
 
-[heater_fan chamber_heater_fan]
 [output_pin my_pin]
 pin: PE14
 ```
