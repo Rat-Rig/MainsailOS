@@ -2,27 +2,38 @@
 
 RatOS comes with a built in chamber heater control that supports 3 differenct scenarios. 
 
-- [1. Hotend thermistor controlled chamber heating](#1-hotend-thermistor-controlled-chamber-heating)
-- [2. Classic chamber heater control](#2-classic-chamber-heater-control)
-- [3. External heater device control](#3-external-heater-device-control)
+- [1. Bed heater](#1-bed-heater)
+- [2. Internal heater](#2-internal-heater)
+- [3. External heater](#3-external-heater)
 
 
 ## Prerequisites
 - Make sure to configure your slicer according to the [official RatOS slicer configuration](../slicers.md)
 
-## 1. Hotend thermistor controlled chamber heating
-RatOS uses by default the hotend thermistor and the bed heater to control the chamber temperature. No further configuration needed.
+## 1. Bed heater
+RatOS uses by default the bed heater to heat the chamber, the hotend thermistor or a chamber thermistor will be used to wait for the initial chamber temperature.
 
-## 2. Classic chamber heater control
-A pwm controlled chamber heater, a heater fan and a chamber thermistor to control the chamber temperature. 
+- if no `temperature_sensor chamber` is defined, the hotend thermistor will be used to wait for the initial chamber temperature.
 
 ### Configuration
 
-Make sure to name your devices after this example configuration. 
+*Make sure to name your devices after this example configuration.* 
 ```
-[gcode_macro RatOS]
-variable_chamber_heater_type: "generic_heater"
+[temperature_sensor chamber]
+sensor_type: ATC Semitec 104GT-2
+sensor_pin: PF4
+```
 
+## 2. Internal heater
+A pwm controlled chamber heater, a heater fan and a chamber thermistor to control the chamber temperature. 
+
+- if no `temperature_sensor chamber` is defined, the hotend thermistor will be used to wait for the initial chamber temperature.
+- if `temperature_sensor chamber` is defined it will be used for the automatic chamber temperature control. 
+
+### Configuration
+
+*Make sure to name your devices after this example configuration.* 
+```
 [temperature_sensor chamber]
 sensor_type: ATC Semitec 104GT-2
 sensor_pin: PF4
@@ -48,21 +59,21 @@ heater: chamber_heater
 heater_temp: 40
 ```
 
-## 3. External heater device control
-A dedicated heater device with its own temperature control that can be switched on/off by a relais/output_pin and a chamber thermistor to control the initial chamber temperature. 
+## 3. External heater
+A dedicated heater device with or without its own temperature control that can be switched on/off by a relais/output_pin and a chamber thermistor to control the initial chamber temperature. 
+
+- if no `temperature_sensor chamber` is defined, the hotend thermistor will be used to wait for the initial chamber temperature.
+- a `temperature_sensor chamber` can be used for the automatic chamber temperature control. In this case set `chamber_heater_control_external_heater` to `True`. This will turn the heater on/off when needed.
 
 ### Configuration
 
-Make sure to name your devices after this example configuration. 
+*Make sure to name your devices after this example configuration.*
 ```
-[gcode_macro RatOS]
-variable_chamber_heater_type: "output_pin"
-
 [temperature_sensor chamber]
 sensor_type: ATC Semitec 104GT-2
 sensor_pin: PF4
 
-[output_pin my_pin]
+[output_pin chamber_heater_pin]
 pin: PE14
 ```
 
@@ -71,10 +82,10 @@ pin: PE14
 ```
 [gcode_macro RatOS]
 variable_chamber_heater_enable: True                      # True|False = enable chamber heater control
-variable_chamber_heater_type: "hotend"                    # generic_heater|output_pin|hotend = type of heater control
 variable_chamber_heater_bed_temp: 115                     # int = bed temperature during chamber preheating
 variable_chamber_heater_preheating_temp: 150              # int = the temp the generic_heater is set to when preheating the chamber
 variable_chamber_heater_heating_temp_offset: 25           # int = the temp offset for the generic_heater, in addition to the target chamber_temp, while printing
+variable_chamber_heater_control_external_heater: False    # True|False = automatic heater control for external heater devices
 variable_chamber_heater_air_circulation_enable: True      # True|False = uses the part cooling to blow air from the top of the chamber to the bottom when preheating the chamber
 variable_chamber_heater_air_circulation_fan_speed: 0.35   # float = the part cooling fan speed that is used to circulate the air when preheating the chamber
 variable_chamber_heater_air_circulation_y_pos: 0          # float = toolhead y-pos when circulating the air
