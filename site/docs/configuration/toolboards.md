@@ -8,7 +8,7 @@ RatOS supports multiple toolboards connected via USB. They can be flashed initia
 
 # What about CAN?
 
-No CAN do. RatOS does not provide any means of setting up a CAN connection to your toolboard. At this point for RatOS, CAN is not needed and unnecessary.  
+No CAN do. RatOS does not provide any means of setting up a CAN connection to your toolboard. At this point for RatOS, CAN is not needed and unnecessary.  See [No, you don't want to use CAN](/blog/no-you-dont-want-to-use-can) for more details on why CAN isn't the default protocol in RatOS.
 
 If, despite all this, you still want to use CAN, you can do so manually just like every other klipper installation.
 
