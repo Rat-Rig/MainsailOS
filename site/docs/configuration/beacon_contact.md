@@ -126,6 +126,7 @@ variable_beacon_contact_z_tilt_adjust_samples: 2         # probe samples for con
 variable_beacon_contact_prime_probing: True              # probe for priming with contact method
 variable_beacon_contact_calibration_temp: 150            # nozzle temperature for auto calibration
 variable_beacon_contact_expansion_compensation: True     # enables the nozzle thermal expansion compensation
+variable_beacon_contact_wipe_before_calibrate: True      # enables a nozzle wipe at Y0 before doing the contact calibration
 ```
 
 ## 7. Tools
