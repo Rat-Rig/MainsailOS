@@ -170,3 +170,9 @@ enable_compensation: True
 
 	Use your target bed temperature for the `BED_TEMP` parameter. It will home your printer and run the calibration fully automated.
 	In case you have a chamber heater it is recommended to heat it up to your target temperature before starting the test.
+
+Before compensation
+![Before compensation](_media/before_beacon_scan_compensation.png)
+
+After compensation
+![After compensation](_media/after_beacon_scan_compensation.png)
