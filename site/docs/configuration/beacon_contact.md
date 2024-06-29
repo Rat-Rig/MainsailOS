@@ -166,7 +166,7 @@ Since this is still in beta you need to activate the feature manually. Copy this
 enable_compensation: True
 ```
 
-- Run `BEACON_CREATE_SCAN_COMPENSATION_MESH BED_TEMP=85 Profile=Contact`
+- Run `BEACON_CREATE_SCAN_COMPENSATION_MESH BED_TEMP=85 Profile=Contact` to create a contact reference bed mesh.
 
 	Use your target bed temperature for the `BED_TEMP` parameter. It will home your printer and run the calibration fully automated.
 	In case you have a chamber heater it is recommended to heat it up to your target temperature before starting the test.
