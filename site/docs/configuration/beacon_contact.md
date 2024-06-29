@@ -127,6 +127,7 @@ variable_beacon_contact_prime_probing: True              # probe for priming wit
 variable_beacon_contact_calibration_temp: 150            # nozzle temperature for auto calibration
 variable_beacon_contact_expansion_compensation: True     # enables the nozzle thermal expansion compensation
 variable_beacon_contact_wipe_before_calibrate: True      # enables a nozzle wipe at Y0 before doing the contact calibration
+variable_beacon_scan_compensation_profile: "Contact"     # The contact profile name for the scan compensation
 ```
 
 ## 7. Tools
@@ -154,3 +155,18 @@ Median distance moving up 1.99990, down 2.00286, delta 0.00296 over 20 samples
 ```
 
 The delta value represents your backlash in mm.
+
+
+### BETA! Automated Beacon Scan Compensation
+With RatOS you can automatically compensate for inaccuracies in the build sheets material thickness which causes a ripple effect on scanned bed meshes.
+
+Since this is still in beta you need to activate the feature manually. Copy this to your printer.cfg file.
+```
+[beacon_scan_compensator]
+enable_compensation: True
+```
+
+- Run `BEACON_CREATE_SCAN_COMPENSATION_MESH BED_TEMP=85 Profile=Contact`
+
+	Use your target bed temperature for the `BED_TEMP` parameter. It will home your printer and run the calibration fully automated.
+	In case you have a chamber heater it is recommended to heat it up to your target temperature before starting the test.
