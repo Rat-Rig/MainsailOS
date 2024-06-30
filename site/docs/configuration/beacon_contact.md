@@ -171,7 +171,7 @@ enable_compensation: True
 	Use your target bed temperature for the `BED_TEMP` parameter. It will home your printer, heat it to target temp, waits for heat soaking and run the calibration fully automated.
 	In case you have a chamber heater it is recommended to heat it up to your target temperature before starting the test.
 
-- You need for each build plate and target printing temperature, of the temp diff is higher than 10°, a own reference contact mesh. Rerun the `BEACON_CREATE_SCAN_COMPENSATION_MESH` command and choose another `PROFILE` name for it.
+- You'll need a reference contact mesh for each build plate and each time your target bed temperature changes more than 10 or 20 degrees (TBD). For example, if i primarily print ABS at 110 and PETG 80 both on the same powder coated sheet, i would need two contact meshes, one for 80 and one for 110. If i print at 90 and 110, i might be able to get away with a single contact mesh at 100c. You can create separate compensation meshes by running `BEACON_CREATE_SCAN_COMPENSATION_MESH` command with the `PROFILE` parameter. For example `BEACON_CREATE_SCAN_COMPENSATION_MESH PROFILE="PEI_PC_90"`
 
 - Set the profile name for the wanted reference mesh profile in the gcode variable `beacon_scan_compensation_profile`. The default profile name is `Contact`
 
