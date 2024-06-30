@@ -173,6 +173,8 @@ enable_compensation: True
 
 - You need for each build plate and target printing temperature, of the temp diff is higher than 10°, a own reference contact mesh. Rerun the `BEACON_CREATE_SCAN_COMPENSATION_MESH` command and choose another `PROFILE` name for it.
 
+- Set the profile name for the wanted reference mesh profile in the gcode variable `beacon_scan_compensation_profile`. The default profile name is `Contact`
+
 Before compensation
 
 ![Before compensation](_media/before_beacon_scan_compensation.png)
