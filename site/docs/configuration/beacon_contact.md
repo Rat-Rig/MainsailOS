@@ -161,6 +161,21 @@ The delta value represents your backlash in mm.
 ### BETA! Automated Beacon Scan Compensation
 With RatOS you can automatically compensate for inaccuracies in the build sheets material thickness which causes a ripple effect on scanned bed meshes.
 
+How do i know if i need this?
+
+- Make a scan bed mesh and save it as `Scan1`
+- Rotate the build plate by 90°
+- Make a second scan bed mesh and save it as `Scan2`
+- if you see that the pattern follows the build plate you need this compensation
+
+Scan 1
+
+<img src="_media/0degree.png" width="600" />
+
+Scan 2 with the build plate rotated by 90°
+
+<img src="_media/90degree.png" width="600" />
+
 Since this is still in beta you need to activate the feature manually. Copy this to your printer.cfg file.
 ```
 [gcode_macro RatOS]
@@ -188,8 +203,8 @@ probe_count: 15,15
 
 Before compensation
 
-![Before compensation](_media/before_beacon_scan_compensation.png)
+<img src="_media/before_beacon_scan_compensation.png" width="600" />
 
 After compensation
 
-![After compensation](_media/after_beacon_scan_compensation.png)
+<img src="_media/after_beacon_scan_compensation.png" width="600" />
