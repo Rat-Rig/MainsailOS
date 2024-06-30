@@ -127,6 +127,7 @@ variable_beacon_contact_prime_probing: True              # probe for priming wit
 variable_beacon_contact_calibration_temp: 150            # nozzle temperature for auto calibration
 variable_beacon_contact_expansion_compensation: True     # enables the nozzle thermal expansion compensation
 variable_beacon_contact_wipe_before_calibrate: True      # enables a nozzle wipe at Y0 before doing the contact calibration
+variable_beacon_scan_compensation_enable: False          # Enables the beacon scan compensation
 variable_beacon_scan_compensation_profile: "Contact"     # The contact profile name for the scan compensation
 ```
 
@@ -162,8 +163,14 @@ With RatOS you can automatically compensate for inaccuracies in the build sheets
 
 Since this is still in beta you need to activate the feature manually. Copy this to your printer.cfg file.
 ```
-[beacon_scan_compensator]
-enable_compensation: True
+[gcode_macro RatOS]
+variable_beacon_scan_compensation_enable: True          # Enables the beacon scan compensation
+```
+
+For the contact mesh creation it is recommended to temporarily change the probe_counts to 10x10 or 15x15. After the mesh has been created you can go back to much higher values for the scan method.
+```
+[bed_mesh]
+probe_count: 15,15
 ```
 
 - Run `BEACON_CREATE_SCAN_COMPENSATION_MESH BED_TEMP=85 PROFILE=Contact` to create a contact reference bed mesh.
