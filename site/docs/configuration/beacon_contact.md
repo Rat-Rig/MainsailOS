@@ -177,6 +177,8 @@ enable_compensation: True
 
 - If `BEACON_CREATE_SCAN_COMPENSATION_MESH` throws an error while meshing, you can jsut run `BED_MESH_CALIBRATE PROBE_METHOD=contact USE_CONTACT_AREA=1 SAMPLES=2 SAMPLES_DROP=1 SAMPLES_TOLERANCE_RETRIES=10 PROFILE=Contact`. This will skip the heat soaking part which isnt needed anymore in this case.
 
+- If the feature is enabled it will automatically compensate while printing, there is no other user action requried. If you want to see the compensation for a manually created mesh, just open the mesh in mainsail and run `BEACON_APPLY_SCAN_COMPENSATION PROFILE=Contact` in the console, this will update the mesh in mainsail.
+
 Before compensation
 
 ![Before compensation](_media/before_beacon_scan_compensation.png)
