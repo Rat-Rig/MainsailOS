@@ -202,6 +202,6 @@ probe_count: 15,15
 - If the feature is enabled it will automatically compensate while printing, there is no other user action requried. If you want to see the compensation for a manually created mesh, just open the mesh in mainsail and run `BEACON_APPLY_SCAN_COMPENSATION PROFILE=Contact` in the console, this will update the mesh in mainsail.
 
 
-Click the image to to o pen the video and see the result in action
+Click the image to to open the video and see the result in action
 
 [<img src="https://img.youtube.com/vi/qjRhAHsX0Hc/maxresdefault.jpg" width="50%">](https://youtu.be/qjRhAHsX0Hc)
