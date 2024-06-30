@@ -90,4 +90,5 @@ variable_chamber_heater_air_circulation_enable: True      # True|False = uses th
 variable_chamber_heater_air_circulation_fan_speed: 0.35   # float = the part cooling fan speed that is used to circulate the air when preheating the chamber
 variable_chamber_heater_air_circulation_y_pos: 0          # float = toolhead y-pos when circulating the air
 variable_chamber_heater_air_circulation_z_pos: 100        # float = toolhead z-pos when circulating the air
+variable_chamber_heater_filter_fan_speed: 1.0             # float = the filter fan speed that is used to circulate the air when preheating the chamber
 ```
