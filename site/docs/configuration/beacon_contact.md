@@ -168,12 +168,14 @@ enable_compensation: True
 
 - Run `BEACON_CREATE_SCAN_COMPENSATION_MESH BED_TEMP=85 PROFILE=Contact` to create a contact reference bed mesh.
 
-	Use your target bed temperature for the `BED_TEMP` parameter. It will home your printer and run the calibration fully automated.
+	Use your target bed temperature for the `BED_TEMP` parameter. It will home your printer, heat it to target temp, waits for heat soaking and run the calibration fully automated.
 	In case you have a chamber heater it is recommended to heat it up to your target temperature before starting the test.
 
 - You need for each build plate and target printing temperature, of the temp diff is higher than 10°, a own reference contact mesh. Rerun the `BEACON_CREATE_SCAN_COMPENSATION_MESH` command and choose another `PROFILE` name for it.
 
 - Set the profile name for the wanted reference mesh profile in the gcode variable `beacon_scan_compensation_profile`. The default profile name is `Contact`
+
+- If `BEACON_CREATE_SCAN_COMPENSATION_MESH` throws an error while meshing, you can jsut run `BED_MESH_CALIBRATE PROBE_METHOD=contact USE_CONTACT_AREA=1 SAMPLES=2 SAMPLES_DROP=1 SAMPLES_TOLERANCE_RETRIES=10 PROFILE=Contact`. This will skip the heat soaking part which isnt needed anymore in this case.
 
 Before compensation
 
