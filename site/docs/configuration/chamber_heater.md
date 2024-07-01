@@ -83,7 +83,7 @@ A extra fan can be configured to support the chamber heating process.
 [fan_generic chamber_heater_extra_fan]
 ```
 
-## User macro hooks
+## User Macro Hooks
 ```
 [gcode_macro _USER_CHAMBER_HEATER_BEFORE_PREHEATING]
 description: Will be executed before chamber preheating, only if heating is needed.
