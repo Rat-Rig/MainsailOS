@@ -83,6 +83,17 @@ A extra fan can be configured to support the chamber heating process.
 [fan_generic chamber_heater_extra_fan]
 ```
 
+## User macro hooks
+```
+[gcode_macro _USER_CHAMBER_HEATER_BEFORE_PREHEATING]
+description: Will be executed before chamber preheating, only if heating is needed.
+gcode:
+
+[gcode_macro _USER_CHAMBER_HEATER_AFTER_PREHEATING]
+description: Will be executed after chamber preheating, only if heating was needed.
+gcode:
+```
+
 ### RatOS Configuration
 
 ```
