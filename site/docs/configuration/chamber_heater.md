@@ -83,6 +83,30 @@ A extra fan can be configured to support the chamber heating process, control it
 [fan_generic chamber_heater_extra_fan]
 ```
 
+To support more usecases the chamber heater extra fan control comes with two macro hooks that can be overwritten. 
+
+```
+[gcode_macro _CHAMBER_HEATER_EXTRA_FAN_ON]
+gcode:
+	# config
+	{% set chamber_heater_extra_fan_speed = printer["gcode_macro RatOS"].chamber_heater_extra_fan_speed|default(0.0)|float %}
+
+	# turn chamber heater extra fan on
+	{% if printer["fan_generic chamber_heater_extra_fan"] is defined %}
+		{% if chamber_heater_extra_fan_speed > 0 %}
+			SET_FAN_SPEED FAN=chamber_heater_extra_fan SPEED={chamber_heater_extra_fan_speed}
+		{% endif %}
+	{% endif %}
+```
+```
+[gcode_macro _CHAMBER_HEATER_EXTRA_FAN_OFF]
+gcode:
+	# turn chamber heater extra fan off
+	{% if printer["fan_generic chamber_heater_extra_fan"] is defined %}
+		SET_FAN_SPEED FAN=chamber_heater_extra_fan SPEED=0
+	{% endif %}
+```
+
 ## User Macro Hooks
 ```
 [gcode_macro _USER_CHAMBER_HEATER_BEFORE_PREHEATING]
