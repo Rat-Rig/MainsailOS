@@ -78,7 +78,7 @@ pin: PE14
 ```
 
 ## Extra Chamber Heater Fan
-A extra fan can be configured to support the chamber heating process. 
+A extra fan can be configured to support the chamber heating process, control its speed with the `chamber_heater_extra_fan_speed` variable.
 ```
 [fan_generic chamber_heater_extra_fan]
 ```
