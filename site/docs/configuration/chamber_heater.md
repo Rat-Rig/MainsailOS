@@ -65,6 +65,12 @@ A dedicated heater device with or without its own temperature control that can b
 - if no `temperature_sensor chamber` is defined, the hotend thermistor will be used to wait for the initial chamber temperature.
 - a `temperature_sensor chamber` can be used for the automatic chamber temperature control. In this case set `chamber_heater_control_external_heater` to `True`. This will turn the heater on/off when needed.
 
+## Extra Chamber Heater Fan
+A extra fan can be configured to support the chamber heating process. 
+```
+[fan_generic chamber_heater_extra_fan]
+```
+
 ### Configuration
 
 *Make sure to name your devices after this example configuration.*
@@ -90,5 +96,6 @@ variable_chamber_heater_air_circulation_enable: True      # True|False = uses th
 variable_chamber_heater_air_circulation_fan_speed: 0.35   # float = the part cooling fan speed that is used to circulate the air when preheating the chamber
 variable_chamber_heater_air_circulation_y_pos: 0          # float = toolhead y-pos when circulating the air
 variable_chamber_heater_air_circulation_z_pos: 100        # float = toolhead z-pos when circulating the air
+variable_chamber_heater_extra_fan_speed: 1.0              # float = the extra chamber heater fan that is used to circulate the air when preheating the chamber
 variable_chamber_heater_filter_fan_speed: 1.0             # float = the filter fan speed that is used to circulate the air when preheating the chamber
 ```
