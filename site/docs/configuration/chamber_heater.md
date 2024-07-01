@@ -65,12 +65,6 @@ A dedicated heater device with or without its own temperature control that can b
 - if no `temperature_sensor chamber` is defined, the hotend thermistor will be used to wait for the initial chamber temperature.
 - a `temperature_sensor chamber` can be used for the automatic chamber temperature control. In this case set `chamber_heater_control_external_heater` to `True`. This will turn the heater on/off when needed.
 
-## Extra Chamber Heater Fan
-A extra fan can be configured to support the chamber heating process. 
-```
-[fan_generic chamber_heater_extra_fan]
-```
-
 ### Configuration
 
 *Make sure to name your devices after this example configuration.*
@@ -81,6 +75,12 @@ sensor_pin: PF4
 
 [output_pin chamber_heater_pin]
 pin: PE14
+```
+
+## Extra Chamber Heater Fan
+A extra fan can be configured to support the chamber heating process. 
+```
+[fan_generic chamber_heater_extra_fan]
 ```
 
 ### RatOS Configuration
