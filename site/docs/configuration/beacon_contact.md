@@ -6,9 +6,10 @@
 - [Beacon latency check](#2-beacon-latency-check)
 - [Temperature expansion calibration](#3-temperature-expansion-calibration)
 - [Final calibration](#4-final-calibration)
-- [First print and fine tuning](#5-first-print-and-fine-tuning)
-- [RatOS configuration](#6-ratos-configuration)
-- [Beacon Tools](#7-tools)
+- [Beacon Scan Compensation](#5-beta-automated-beacon-scan-compensation)
+- [First print and fine tuning](#6-first-print-and-fine-tuning)
+- [RatOS configuration](#7-ratos-configuration)
+- [Beacon Tools](#8-tools)
 
 ## Prerequisites
 - update RatOS 2.1 via mainsail
@@ -16,13 +17,14 @@
 
 ## Fully automated RatOS Beacon calibration
 Ratos comes with a fully automated beacon model and temperature offset calibration. 
-- Run `BEACON_RATOS_CALIBRATION BED_TEMP=85`. Use your target bed temperature for the `BED_TEMP` parameter.
+- Run `BEACON_RATOS_CALIBRATION BED_TEMP=85 CHAMBER_TEMP=45`. Use your target temperature for the `BED_TEMP` and `CHAMBER_TEMP` parameter.
 
 	The automated beacon calibration will run the following calibrations and tests, which can also be used individually. Please make sure to read every section before starting the calibration.
 	- [Initial calibration](#1-initial-calibration)
 	- [Beacon latency check](#2-beacon-latency-check)
 	- [Temperature expansion calibration](#3-temperature-expansion-calibration) (for non IDEX printer)
 	- [Final calibration](#4-final-calibration)
+	- [Beacon scan compensation](#5-beta-automated-beacon-scan-compensation)
 	
 	All calibration results will be saved automatically, there is no user action required.
 
@@ -91,19 +93,83 @@ The result will be saved automatically to the configuration file, there is no us
 
 ## 4. Final calibration
 For the scan method z-homing we should create a beacon model under real conditions. This is optional but recommended.
-- Run `BEACON_FINAL_CALIBRATION BED_TEMP=85`
+- Run `BEACON_FINAL_CALIBRATION BED_TEMP=85 CHAMBER_TEMP=45`
 
-	Use your target bed temperature for the `BED_TEMP` parameter. It will home your printer and run the calibration fully automated.
-	In case you have a chamber heater it is recommended to heat it up to your target temperature before starting the test.
+	Use your target temperature for the `BED_TEMP` and `CHAMBER_TEMP` parameter. It will home your printer and run the calibration fully automated.
 
 - Run `SAVE_CONFIG` to save the model to your printer.cfg file.
 
-## 5. First print and fine tuning
+## 5. BETA! Automated Beacon Scan Compensation
+With RatOS you can automatically compensate for gantry twist over the complete build plate and inaccuracies in the build sheets material thickness which causes a ripple effect on scanned bed meshes.
+
+### How  do i know if i need this?
+
+Measuring gantry twist
+
+- `BEACON_MEASURE_GANTRY_TWIST` automatically measures the gantry twist on multiple locations on the bed. It will home your printer and level the bed if needed. The result will be displayed after the test has finished. The command can throw a tolerance error, in this case just repeat it until the command gets 
+
+The result will look like this.
+
+```
+Gantry twist relative to the center
+
+Low gantry twist: 50.324232μm.
+You may experience first layer inconsistensies, consider beacon scan compensation.
+
+Front left: 2.362576μm
+Front center: 16.475233μm
+Front right: -47.959155μm
+Left center: 24.925954μm
+Right center: -22.468182μm
+Back left: 50.324232μm
+Back center: 37.143389μm
+Back right: -4.167238μm
+```
+
+Check your build plate
+
+- Make a scan bed mesh and save it as `Scan1`
+- Rotate the build plate by 90°
+- Make a second scan bed mesh and save it as `Scan2`
+- if you see that the pattern follows the build plate you need this compensation
+
+Scan 1
+
+<img src="_media/0degree.png" width="600" />
+
+Scan 2 with the build plate rotated by 90°
+
+<img src="_media/90degree.png" width="600" />
+
+Since this is still in beta you need to activate the feature manually. Copy this to your printer.cfg file.
+```
+[gcode_macro RatOS]
+variable_beacon_scan_compensation_enable: True          # Enables the beacon scan compensation
+```
+
+- Run `BEACON_CREATE_SCAN_COMPENSATION_MESH BED_TEMP=85 CHAMBER_TEMP=45 PROFILE=Contact` to create a contact reference bed mesh.
+
+	Use your target temperature for the `BED_TEMP` and `CHAMBER_TEMP` parameter. It will home your printer, heat it to target temp, waits for heat soaking and run the calibration fully automated.
+
+- You'll need a reference contact mesh for each build plate and each time your target bed temperature changes more than 10 or 20 degrees (TBD). For example, if i primarily print ABS at 110 and PETG 80 both on the same powder coated sheet, i would need two contact meshes, one for 80 and one for 110. If i print at 90 and 110, i might be able to get away with a single contact mesh at 100c. You can create separate compensation meshes by running `BEACON_CREATE_SCAN_COMPENSATION_MESH` command with the `PROFILE` parameter. For example `BEACON_CREATE_SCAN_COMPENSATION_MESH PROFILE="PEI_PC_90"`
+
+- Set the profile name for the wanted reference mesh profile in the gcode variable `beacon_scan_compensation_profile`. The default profile name is `Contact`
+
+- If `BEACON_CREATE_SCAN_COMPENSATION_MESH` throws an error while meshing, you can jsut run `BED_MESH_CALIBRATE PROBE_METHOD=contact USE_CONTACT_AREA=1 SAMPLES=2 SAMPLES_DROP=1 SAMPLES_TOLERANCE_RETRIES=10 PROFILE=Contact`. This will skip the heat soaking part which isnt needed anymore in this case.
+
+- If the feature is enabled it will automatically compensate while printing, there is no other user action requried. If you want to see the compensation for a manually created mesh, just open the mesh in mainsail and run `BEACON_APPLY_SCAN_COMPENSATION PROFILE=Contact` in the console, this will update the mesh in mainsail.
+
+
+Click the image to to open the video and see the result in action
+
+[<img src="https://img.youtube.com/vi/qjRhAHsX0Hc/maxresdefault.jpg" width="50%">](https://youtu.be/qjRhAHsX0Hc)
+
+## 6. First print and fine tuning
 - Print a 150x30mm one layer thick rectangle in the middle of the buildplate.
 - While printing finetune with babystepping.
 - Run `SAVE_Z_OFFSET` to save the changes. 
 
-## 6. RatOS configuration
+## 7. RatOS configuration
 The beacon contact feature is activated by default, you dont need to do anything. But you can override the settings to enable more beacon contact features if wanted. Just copy and paste this complete block to your printer.cfg file and make the changes there.
 ```
 #####
@@ -129,24 +195,10 @@ variable_beacon_contact_expansion_compensation: True     # enables the nozzle th
 variable_beacon_contact_wipe_before_calibrate: True      # enables a nozzle wipe at Y0 before doing the contact calibration
 variable_beacon_scan_compensation_enable: False          # Enables the beacon scan compensation
 variable_beacon_scan_compensation_profile: "Contact"     # The contact profile name for the scan compensation
+variable_beacon_scan_compensation_probe_count: 15,15     # The contact probe count for the scan compensation
 ```
 
-## 7. Tools
-
-### Measuring gantry twist
-With the RatOS macro `BEACON_MEASURE_GANTRY_TWIST` you can automatically measure your gantry twist on multiple locations on the bed. It will home your printer and level the bed if needed. The result will be displayed after the test has finished. The command can throw a tolerance error, in this case just repeat it until the command gets successfully executed. 
-
-```
-Gantry twist:
-Front left:    0.015022mm
-Front center:  0.013889mm
-Front right:   0.007666mm
-Left center:   0.000000mm
-Right center:  0.009345mm
-Back left:    -0.026518mm
-Back center:   0.027997mm
-Back right:    0.013992mm
-```
+## 8. Tools
 
 ### Measuring z-axis backlash
 With the beacon macro `BEACON_ESTIMATE_BACKLASH` you can measure the backlash of your setup. You need to home your printer and level your bed before using it.
@@ -158,50 +210,3 @@ Median distance moving up 1.99990, down 2.00286, delta 0.00296 over 20 samples
 The delta value represents your backlash in mm.
 
 
-### BETA! Automated Beacon Scan Compensation
-With RatOS you can automatically compensate for inaccuracies in the build sheets material thickness which causes a ripple effect on scanned bed meshes.
-
-How do i know if i need this?
-
-- Make a scan bed mesh and save it as `Scan1`
-- Rotate the build plate by 90°
-- Make a second scan bed mesh and save it as `Scan2`
-- if you see that the pattern follows the build plate you need this compensation
-
-Scan 1
-
-<img src="_media/0degree.png" width="600" />
-
-Scan 2 with the build plate rotated by 90°
-
-<img src="_media/90degree.png" width="600" />
-
-Since this is still in beta you need to activate the feature manually. Copy this to your printer.cfg file.
-```
-[gcode_macro RatOS]
-variable_beacon_scan_compensation_enable: True          # Enables the beacon scan compensation
-```
-
-For the contact mesh creation it is recommended to temporarily change the probe_counts to 10x10 or 15x15. After the mesh has been created you can go back to much higher values for the scan method.
-```
-[bed_mesh]
-probe_count: 15,15
-```
-
-- Run `BEACON_CREATE_SCAN_COMPENSATION_MESH BED_TEMP=85 PROFILE=Contact` to create a contact reference bed mesh.
-
-	Use your target bed temperature for the `BED_TEMP` parameter. It will home your printer, heat it to target temp, waits for heat soaking and run the calibration fully automated.
-	In case you have a chamber heater it is recommended to heat it up to your target temperature before starting the test.
-
-- You'll need a reference contact mesh for each build plate and each time your target bed temperature changes more than 10 or 20 degrees (TBD). For example, if i primarily print ABS at 110 and PETG 80 both on the same powder coated sheet, i would need two contact meshes, one for 80 and one for 110. If i print at 90 and 110, i might be able to get away with a single contact mesh at 100c. You can create separate compensation meshes by running `BEACON_CREATE_SCAN_COMPENSATION_MESH` command with the `PROFILE` parameter. For example `BEACON_CREATE_SCAN_COMPENSATION_MESH PROFILE="PEI_PC_90"`
-
-- Set the profile name for the wanted reference mesh profile in the gcode variable `beacon_scan_compensation_profile`. The default profile name is `Contact`
-
-- If `BEACON_CREATE_SCAN_COMPENSATION_MESH` throws an error while meshing, you can jsut run `BED_MESH_CALIBRATE PROBE_METHOD=contact USE_CONTACT_AREA=1 SAMPLES=2 SAMPLES_DROP=1 SAMPLES_TOLERANCE_RETRIES=10 PROFILE=Contact`. This will skip the heat soaking part which isnt needed anymore in this case.
-
-- If the feature is enabled it will automatically compensate while printing, there is no other user action requried. If you want to see the compensation for a manually created mesh, just open the mesh in mainsail and run `BEACON_APPLY_SCAN_COMPENSATION PROFILE=Contact` in the console, this will update the mesh in mainsail.
-
-
-Click the image to to open the video and see the result in action
-
-[<img src="https://img.youtube.com/vi/qjRhAHsX0Hc/maxresdefault.jpg" width="50%">](https://youtu.be/qjRhAHsX0Hc)
