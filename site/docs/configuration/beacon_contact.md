@@ -24,7 +24,7 @@ Ratos comes with a fully automated beacon model and temperature offset calibrati
 	- [Beacon latency check](#2-beacon-latency-check)
 	- [Temperature expansion calibration](#3-temperature-expansion-calibration) (for non IDEX printer)
 	- [Final calibration](#4-final-calibration)
-	- [Beacon scan compensation](#5-beta-automated-beacon-scan-compensation)
+	- [Beacon scan compensation](#5-beta-automated-beacon-scan-compensation) *if `beacon_scan_compensation_enable: True` a reference mesh will be created if needed*
 	
 	All calibration results will be saved automatically, there is no user action required.
 
