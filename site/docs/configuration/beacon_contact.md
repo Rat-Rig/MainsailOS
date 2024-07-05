@@ -129,7 +129,7 @@ Back right: -4.167238μm
 Check your build plate
 
 - Make a scan bed mesh and save it as `Scan1`
-- Rotate the build plate by 90°
+- Rotate the build plate by 90° *not the bed*
 - Make a second scan bed mesh and save it as `Scan2`
 - if you see that the pattern follows the build plate you need this compensation
 
