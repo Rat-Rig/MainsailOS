@@ -55,10 +55,10 @@ Compare your latency values with the following list.
 | Score	| Notes |
 | :------------ |:--------------- |
 | 0-1	| Extremely low noise, rarely achieved
-| 2-3	| Excellent performance for a typical printer
-| 4-6	| Acceptable performance, machine may have considerable cyclic axis noise
-| 7-9	| Not ideal, may want to verify proper mounting or use thinner stackups
-| 10-11	| Reason for concern, present setup may be risky to continue with
+| 2-4	| Excellent performance for a typical printer
+| 5-8	| Acceptable performance, machine may have considerable cyclic axis noise
+| 9-11	| Not ideal, may want to verify proper mounting or use thinner stackups
+| 12-14	| Reason for concern, present setup may be risky to continue with
 
 ## 3. Temperature expansion calibration
 RatOS comes with a built in temperature expansion calibration and compensation.
