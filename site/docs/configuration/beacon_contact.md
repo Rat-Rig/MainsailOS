@@ -1,4 +1,4 @@
-# RatOS 2.1 with Beacon Contact 
+# RatOS 2.1 with Beacon Contact
 
 - [Prerequisites](#prerequisites)
 - [Fully automated RatOS Beacon calibration](#fully-automated-ratos-beacon-calibration)
@@ -13,10 +13,20 @@
 
 ## Prerequisites
 - update RatOS 2.1 via mainsail
-- read the official [beacon contact documentation](https://docs.beacon3d.com/contact/), but do not follow any installation instructions from there. 
+- read the official [beacon contact documentation](https://docs.beacon3d.com/contact/), but do not follow any installation instructions from there.
+
+## NEW! Bed and hotend heat soaking time
+It is recommended to use the new RatOS heat soaking variables. The beacon calibration and the Start print macro are using these values.
+
+```
+[gcode_macro RatOS]
+variable_bed_heat_soak_time: 1200
+variable_hotend_heat_soak_time: 300
+variable_start_print_park_in: 'primeblob'
+```
 
 ## Fully automated RatOS Beacon calibration
-Ratos comes with a fully automated beacon model and temperature offset calibration. 
+Ratos comes with a fully automated beacon model and temperature offset calibration.
 - Run `BEACON_RATOS_CALIBRATION BED_TEMP=85 CHAMBER_TEMP=45`. Use your target temperature for the `BED_TEMP` and `CHAMBER_TEMP` parameter.
 
 	The automated beacon calibration will run the following calibrations and tests, which can also be used individually. Please make sure to read every section before starting the calibration.
@@ -25,24 +35,24 @@ Ratos comes with a fully automated beacon model and temperature offset calibrati
 	- [Temperature expansion calibration](#3-temperature-expansion-calibration) (for non IDEX printer)
 	- [Final calibration](#4-final-calibration)
 	- [Beacon scan compensation](#5-beta-automated-beacon-scan-compensation) *if [beacon_scan_compensation_enable: True](#7-ratos-configuration) a reference mesh will be created if needed*
-	
+
 	All calibration results will be saved automatically, there is no user action required.
 
 ## 1. Initial calibration
-We need to create a intial beacon model to be able to home the printer. 
-- Run `BEACON_INITIAL_CALIBRATION` 
+We need to create a intial beacon model to be able to home the printer.
+- Run `BEACON_INITIAL_CALIBRATION`
 
-	It will home your printer and run the calibration fully automated. This command can throw a tolerance error, in this case just repeat it until the command gets successfully completed. 
+	It will home your printer and run the calibration fully automated. This command can throw a tolerance error, in this case just repeat it until the command gets successfully completed.
 
 	For safety and peace of mind, the LED will turn on as soon as the contact system determines it has a strong enough signal for detection. It should normally turn on up to 10mm in advance of the metal target, allowing enough time to manually estop the machine if necessary.
 
 - Run `SAVE_CONFIG` to save the model to your printer.cfg file.
 
 ## 2. Beacon latency check
-This test will show you the quality of your beacon probing. 
+This test will show you the quality of your beacon probing.
 - Run `BEACON_POKE_TEST`
 
-	It will home your printer and poke the bed multiple times. After it check the console output, it should look like this: 
+	It will home your printer and poke the bed multiple times. After it check the console output, it should look like this:
 ```
 Overshoot: 35.625 um
 Triggered at: z=0.07369 with latency=2
@@ -67,7 +77,7 @@ RatOS comes with a built in temperature expansion calibration and compensation.
 - Unload filament from the nozzle
 - Make sure the nozzle is clean and that no filament is leaking out of it. Make a cold pull for example.
 - Let the machine cool down to ambient temperature
-- Do **NOT** make this calibration on a smooth PEI sheet, in this case turn the sheet arround and make the calibration on the bare metall of it. 
+- Do **NOT** make this calibration on a smooth PEI sheet, in this case turn the sheet arround and make the calibration on the bare metall of it.
 
 **Single toolhead printer**
 - Run `BEACON_CALIBRATE_NOZZLE_TEMP_OFFSET`
@@ -106,7 +116,7 @@ With RatOS you can automatically compensate for gantry twist over the complete b
 
 Measuring gantry twist
 
-- `BEACON_MEASURE_GANTRY_TWIST` automatically measures the gantry twist on multiple locations on the bed. It will home your printer and level the bed if needed. The result will be displayed after the test has finished. The command can throw a tolerance error, in this case just repeat it until the command gets 
+- `BEACON_MEASURE_GANTRY_TWIST` automatically measures the gantry twist on multiple locations on the bed. It will home your printer and level the bed if needed. The result will be displayed after the test has finished. The command can throw a tolerance error, in this case just repeat it until the command gets
 
 The result will look like this.
 
@@ -167,7 +177,7 @@ Click the image to to open the video and see the result in action
 ## 6. First print and fine tuning
 - Print a 150x30mm one layer thick rectangle in the middle of the buildplate.
 - While printing finetune with babystepping.
-- Run `SAVE_Z_OFFSET` to save the changes. 
+- Run `SAVE_Z_OFFSET` to save the changes.
 
 ## 7. RatOS configuration
 The beacon contact feature is activated by default, you dont need to do anything. But you can override the settings to enable more beacon contact features if wanted. Just copy and paste this complete block to your printer.cfg file and make the changes there.
@@ -179,7 +189,7 @@ The beacon contact feature is activated by default, you dont need to do anything
 variable_beacon_bed_mesh_scv: 25                         # square corner velocity for bed meshing with proximity method
 variable_beacon_contact_z_homing: False                  # printer z-homing with contact method
 variable_beacon_contact_z_calibration: True              # contact z-calibration before the print starts
-                                                         # after changing this variable please run a recalibration before you use the printer  
+                                                         # after changing this variable please run a recalibration before you use the printer
                                                          # if you use a smooth PEI sheet turn this feature off
 variable_beacon_contact_calibration_location: "center"   # center = center of the build plate
                                                          # front = front center
