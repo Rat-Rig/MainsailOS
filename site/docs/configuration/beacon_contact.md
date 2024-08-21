@@ -36,7 +36,7 @@ Ratos comes with a fully automated beacon model and temperature offset calibrati
 	- [Final calibration](#4-final-calibration)
 	- [Beacon scan compensation](#5-beta-automated-beacon-scan-compensation) *if [beacon_scan_compensation_enable: True](#7-ratos-configuration) a reference mesh will be created if needed*
 
-	All calibration results will be saved automatically, there is no user action required.
+	All calibration results will be saved automatically, there is no user action required. Klipper will restart by its own after the calibration is done.
 
 ## 1. Initial calibration
 We need to create a intial beacon model to be able to home the printer.
