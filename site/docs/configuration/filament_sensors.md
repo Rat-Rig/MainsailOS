@@ -1,6 +1,6 @@
 # RatOS 2.1 Filament Sensors
 
-RatOS supports multiple sensor types that are toolhead aware. These sensors can be combined to work together. Configure them as described, there are no other changes needed. 
+RatOS supports multiple sensor types that are toolhead aware. These sensors can be combined to work together. Configure them as described, there are no other changes needed.
 
 When combining toolhead and bowden sensors then each sensor has only one function. The Toolhead sensor reacts to the insert detection and the bowden sensor is responsible for the runout detection. This has the benefit that one doesnt need to open a heated chamber and remove the bowden tube to remove the old filament, it will be ejected and can be easily removed at the end of the bowden tube.
 
@@ -34,7 +34,7 @@ Toolhead filament sensors are attached directly onto the toolhead.
 
 ### Features
 
-- runout detection 
+- runout detection
 - insert detection
 - auto load filament on insert
 - auto unload filament after runout
@@ -50,9 +50,9 @@ Toolhead filament sensors are attached directly onto the toolhead.
 pause_on_runout: False
 event_delay: 0.1
 switch_pin: ^!toolboard_t0:PB3
-runout_gcode: 
+runout_gcode:
     _ON_TOOLHEAD_FILAMENT_SENSOR_RUNOUT TOOLHEAD=0
-insert_gcode: 
+insert_gcode:
     _ON_TOOLHEAD_FILAMENT_SENSOR_INSERT TOOLHEAD=0
 ```
 
@@ -62,7 +62,7 @@ Bowden filament sensors are attached somewhere at the bowden tube.
 
 ### Features
 
-- runout detection 
+- runout detection
 - insert detection (no automatic action available, macro can be overridden)
 - auto unload filament after runout
 - spool join for IDEX printer
@@ -75,9 +75,9 @@ Bowden filament sensors are attached somewhere at the bowden tube.
 pause_on_runout: False
 event_delay: 0.1
 switch_pin: ^!PC15
-runout_gcode: 
+runout_gcode:
     _ON_BOWDEN_FILAMENT_SENSOR_RUNOUT TOOLHEAD=0
-insert_gcode: 
+insert_gcode:
     _ON_BOWDEN_FILAMENT_SENSOR_INSERT TOOLHEAD=0
 ```
 
@@ -87,7 +87,7 @@ Motion sensors can be used for clog detection.
 
 ### Features
 
-- optional runout detection 
+- optional runout detection
 - optional insert detection (no automatic action available, macro can be overridden)
 - clog detection
 - auto unload filament after runout
@@ -118,9 +118,34 @@ Some filament sensors, like the orbiter filament sensor, do come with a action b
 ### Configuration
 ```
 [gcode_button toolhead_filament_sensor_button_t0]
-pin: ^!toolboard_t0:PB4 
-release_gcode:     
+pin: ^!toolboard_t0:PB4
+release_gcode:
   _ON_FILAMENT_SENSOR_BUTTON_PRESSED TOOLHEAD=0
+press_gcode:
+```
+
+# Orbiter Smart Filament Sensor example configuration
+
+The new Orbiter Smart Filament Sensor with filament tangle detection.
+
+```
+[filament_switch_sensor toolhead_filament_sensor_t0]
+pause_on_runout: False
+event_delay: 0.1
+switch_pin: ^PA13
+runout_gcode:
+    _ON_TOOLHEAD_FILAMENT_SENSOR_RUNOUT TOOLHEAD=0
+insert_gcode:
+    _ON_TOOLHEAD_FILAMENT_SENSOR_INSERT TOOLHEAD=0
+
+[gcode_button toolhead_filament_sensor_button_t0]
+pin: ^PA14
+release_gcode:
+    {% if (printer.print_stats.state == "printing") %}
+            _ON_TOOLHEAD_FILAMENT_SENSOR_CLOG TOOLHEAD=0
+    {% else %}
+            _ON_FILAMENT_SENSOR_BUTTON_PRESSED TOOLHEAD=0
+    {% endif %}
 press_gcode:
 ```
 
@@ -176,9 +201,9 @@ variable_runout_park_x: 50         # float = if configured the x position of the
 ```
 [gcode_macro T0]
 variable_cooling_position_to_nozzle_distance: 40            # distance between the cooling position and the nozzle
-variable_tooolhead_sensor_to_extruder_gear_distance: 15     # distance between the filament sensor trigger point 
+variable_tooolhead_sensor_to_extruder_gear_distance: 15     # distance between the filament sensor trigger point
                                                             # and where the filament hits the extruder gears
 variable_extruder_gear_to_cooling_position_distance: 30     # distance between the extruder gears and the center of the heatsink cooling tube
-variable_filament_loading_nozzle_offset: -10                # offset tuning value. positive or negative number. 
+variable_filament_loading_nozzle_offset: -10                # offset tuning value. positive or negative number.
                                                             # different nozzles can lead to too much or not enough extrusion while loading the filament
 ```
