@@ -177,7 +177,7 @@ Click the image to to open the video and see the result in action
 ## 6. First print and fine tuning
 - Print a 150x30mm one layer thick rectangle in the middle of the buildplate.
 - While printing finetune with babystepping.
-- Run `SAVE_Z_OFFSET` to save the changes.
+- Run `SAVE_Z_OFFSET` to save the changes. Dont click the button, type `SAVE_Z_OFFSET` into the console.
 
 ## 7. RatOS configuration
 The beacon contact feature is activated by default, you dont need to do anything. But you can override the settings to enable more beacon contact features if wanted. Just copy and paste this complete block to your printer.cfg file and make the changes there.
