@@ -75,9 +75,18 @@ RatOS comes with a built in temperature expansion calibration and compensation.
 
 **Preparation**
 - Unload filament from the nozzle
-- Make sure the nozzle is clean and that no filament is leaking out of it. Make a cold pull for example.
+- Make sure the nozzle is clean and that no filament is leaking out of it. Make a manual cold pull or use the RatOS `COLD_PULL` macro.
 - Let the machine cool down to ambient temperature
 - Do **NOT** make this calibration on a smooth PEI sheet, in this case turn the sheet arround and make the calibration on the bare metall of it.
+
+**Cold Pull Macro**
+
+The cold pull macro lets you perform a automated cold pull and cleans your nozzle. Before the cold pull 30mm of filament will be extruded with the `EXTRUSION_TEMP`.
+
+The default values are good for PLA cold pulls, for PETG and ABS you should use something like `EXTRUSION_TEMP=250 COLD_PULL_TEMP=95`. If you hear skipping during the cold pull, raise the `COLD_PULL_TEMP` a bit.
+```
+COLD_PULL EXTRUSION_TEMP=220 COLD_PULL_TEMP=80 TOOLHEAD=0
+```
 
 **Single toolhead printer**
 - Run `BEACON_CALIBRATE_NOZZLE_TEMP_OFFSET`
