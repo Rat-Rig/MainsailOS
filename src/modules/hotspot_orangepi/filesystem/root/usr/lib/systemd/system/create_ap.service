@@ -1,0 +1,12 @@
+[Unit]
+Description=Generate hotspot or connect to SSID
+After=network-online.target
+Requires=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/start_hotspot.sh
+
+[Install]
+WantedBy=multi-user.target

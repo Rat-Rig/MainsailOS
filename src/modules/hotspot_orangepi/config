@@ -1,0 +1,2 @@
+[ -n "$HOTSPOT_ORANGEPI_SHIP" ] || HOTSPOT_ORANGEPI_SHIP=https://github.com/oblique/create_ap
+[ -n "$HOTSPOT_ORANGEPI_BRANCH" ] || HOTSPOT_ORANGEPI_BRANCH=master

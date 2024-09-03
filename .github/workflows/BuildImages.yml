@@ -2,7 +2,7 @@ name: Build RatOS
 on:
   push:
     branches:
-      - "v2.x"
+      - "orange_pi_3lts_using_official_image"
     paths:
       - "src/modules/**"
       - "src/build_dist"
@@ -36,7 +36,7 @@ jobs:
       - name: Create Matrix
         id: set-matrix
         run: |
-          ARRAY=$(find ${{ github.workspace }}/config -type f -printf '%P\n' | sed '/default/d' | sort | jq -R -s -c 'split("\n")[:-1]')
+          ARRAY=$(find ${{ github.workspace }}/config -type f -name orangepi3lts -printf '%P\n' | sed '/default/d' | sort | jq -R -s -c 'split("\n")[:-1]')
           echo "matrix=${ARRAY}" >> $GITHUB_OUTPUT
 
   build:

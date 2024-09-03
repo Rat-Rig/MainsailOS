@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#### enable SPI
+
+# Shebang for better file detection
+# shellcheck disable=all
+
+[ -n "$SPI_CONFIG_TXT_FILE" ] || SPI_CONFIG_TXT_FILE="/boot/BoardEnv.txt"
+[ -n "$SPI_CONFIG_BAK_FILE" ] || SPI_CONFIG_BAK_FILE="/boot/BoardEnv.txt.backup"

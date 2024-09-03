@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
-<<<<<<< HEAD:src/modules/spi/start_chroot_script
 #### enable SPI
-=======
-#### CB1SPI - SB1 Configuration Module
->>>>>>> upstream/v2.x:src/modules/cb1spi/start_chroot_script
 #from https://www.reddit.com/r/BIGTREETECH/comments/xfom6n/comment/it32e6v/
 
 # shellcheck enable=require-variable-braces
@@ -21,7 +17,6 @@ fi
 source /common.sh
 install_cleanup_trap
 
-<<<<<<< HEAD:src/modules/spi/start_chroot_script
 echo_green "Enable SPI interface on SBC's ..."
 
 # Step 1: Copy default config to backup file
@@ -38,14 +33,3 @@ echo "param_spidev_spi_cs=1" >> "${SPI_CONFIG_TXT_FILE}"
 echo "param_spidev_max_freq=1000000" >> "${SPI_CONFIG_TXT_FILE}"
 
 echo_green "Enable SPI interface on SBC ... DONE!"
-=======
-echo_green "Enable SPI interface on CB1 SBC's ..."
-
-# Step 1: Copy default config to backup file
-cp "${CB1SPI_CONFIG_TXT_FILE}" "${CB1SPI_CONFIG_BAK_FILE}"
-
-# Step 2: Enable SPI
-sed -i 's/^#overlays=spidev1_2.*/overlays=spidev1_2/' "${CB1SPI_CONFIG_TXT_FILE}"
-
-echo_green "Enable SPI interface on CB1 SBC ... DONE!"
->>>>>>> upstream/v2.x:src/modules/cb1spi/start_chroot_script
