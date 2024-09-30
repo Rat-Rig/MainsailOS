@@ -198,26 +198,27 @@ The beacon contact feature is activated by default, you dont need to do anything
 # Beacon probe configuration
 #####
 [gcode_macro RatOS]
-variable_beacon_bed_mesh_scv: 25                         # square corner velocity for bed meshing with proximity method
-variable_beacon_contact_z_homing: False                  # printer z-homing with contact method
-variable_beacon_contact_z_calibration: False             # contact z-calibration before the print starts
-                                                         # after changing this variable please run a recalibration before you use the printer
-                                                         # if you use a smooth PEI sheet turn this feature off
-variable_beacon_contact_calibration_location: "center"   # center = center of the build plate
-                                                         # front = front center
-                                                         # corner = front corner
-variable_beacon_contact_calibrate_margin_x: 30           # x-margin if calibrate in front corners
-variable_beacon_contact_bed_mesh: False                  # bed mesh with contact method
-variable_beacon_contact_bed_mesh_samples: 2              # probe samples for contact bed mesh
-variable_beacon_contact_z_tilt_adjust: False             # z-tilt adjust with contact method
-variable_beacon_contact_z_tilt_adjust_samples: 2         # probe samples for contact z-tilt adjust
-variable_beacon_contact_prime_probing: True              # probe for priming with contact method
-variable_beacon_contact_calibration_temp: 150            # nozzle temperature for auto calibration
-variable_beacon_contact_expansion_compensation: True     # enables the nozzle thermal expansion compensation
-variable_beacon_contact_wipe_before_calibrate: True      # enables a nozzle wipe at Y0 before doing the contact calibration
-variable_beacon_scan_compensation_enable: False          # Enables the beacon scan compensation
-variable_beacon_scan_compensation_profile: "Contact"     # The contact profile name for the scan compensation
-variable_beacon_scan_compensation_probe_count: 15,15     # The contact probe count for the scan compensation
+variable_beacon_bed_mesh_scv: 25                        # square corner velocity for bed meshing with proximity method
+variable_beacon_contact_z_homing: False                 # Make all G28 calls use contact instead of proximity scan
+variable_beacon_contact_start_print_true_zero: True     # Use contact to determine true Z=0 for the last homing move during START_PRINT
+variable_beacon_contact_wipe_before_true_zero: True     # enables a nozzle wipe at Y10 before true zeroing
+variable_beacon_contact_true_zero_temp: 150             # nozzle temperature for true zeroing
+                                                        # WARNING: if you're using a smooth PEI sheet, be careful with the temperature
+
+variable_beacon_contact_prime_probing: True             # probe for priming with contact method
+variable_beacon_contact_expansion_compensation: True    # enables the nozzle thermal expansion compensation
+
+variable_beacon_contact_bed_mesh: False                 # bed mesh with contact method
+variable_beacon_contact_bed_mesh_samples: 2             # probe samples for contact bed mesh
+
+variable_beacon_contact_z_tilt_adjust: False            # z-tilt adjust with contact method
+variable_beacon_contact_z_tilt_adjust_samples: 2        # probe samples for contact z-tilt adjust
+
+variable_beacon_scan_compensation_enable: False         # Enables the beacon scan compensation
+variable_beacon_scan_compensation_profile: "Contact"    # The contact profile name for the scan compensation
+variable_beacon_scan_compensation_probe_count: 15,15    # The contact probe count for the scan compensation
+
+variable_beacon_contact_poke_bottom_limit: -1		    # The bottom limit for the contact poke test
 ```
 
 ## 8. Tools
