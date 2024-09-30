@@ -30,7 +30,7 @@ Ratos comes with a fully automated beacon model and temperature offset calibrati
 
 By default the beacon contact feature is deactivated. If you want to use it and perform the needed calibrations you need to enable `beacon_contact_z_calibration`
 
-- Run `BEACON_RATOS_CALIBRATE BED_TEMP=85 CHAMBER_TEMP=45`. Use your target temperature for the `BED_TEMP` and `CHAMBER_TEMP` parameter.
+- Run `BEACON_RATOS_CALIBRATE BED_TEMP=85 CHAMBER_TEMP=45`. Use your target temperature for the `BED_TEMP` and `CHAMBER_TEMP` parameter. `CHAMBER_TEMP` is optional, and can be omitted.
 
 	The automated beacon calibration will run the following calibrations and tests, which can also be used individually. Please make sure to read every section before starting the calibration.
 	- [Initial calibration](#1-initial-calibration)
