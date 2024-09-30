@@ -27,6 +27,9 @@ variable_start_print_park_in: 'primeblob'
 
 ## Fully automated RatOS Beacon calibration
 Ratos comes with a fully automated beacon model and temperature offset calibration.
+
+By default the beacon contact feature is deactivated. If you want to use it and perform the needed calibrations you need to enable `beacon_contact_z_calibration`
+
 - Run `BEACON_RATOS_CALIBRATE BED_TEMP=85 CHAMBER_TEMP=45`. Use your target temperature for the `BED_TEMP` and `CHAMBER_TEMP` parameter.
 
 	The automated beacon calibration will run the following calibrations and tests, which can also be used individually. Please make sure to read every section before starting the calibration.
@@ -197,7 +200,7 @@ The beacon contact feature is activated by default, you dont need to do anything
 [gcode_macro RatOS]
 variable_beacon_bed_mesh_scv: 25                         # square corner velocity for bed meshing with proximity method
 variable_beacon_contact_z_homing: False                  # printer z-homing with contact method
-variable_beacon_contact_z_calibration: True              # contact z-calibration before the print starts
+variable_beacon_contact_z_calibration: False             # contact z-calibration before the print starts
                                                          # after changing this variable please run a recalibration before you use the printer
                                                          # if you use a smooth PEI sheet turn this feature off
 variable_beacon_contact_calibration_location: "center"   # center = center of the build plate
