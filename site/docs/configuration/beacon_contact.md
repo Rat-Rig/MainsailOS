@@ -10,7 +10,7 @@
 - [First print and fine tuning](#6-first-print-and-fine-tuning)
 - [RatOS configuration](#7-ratos-configuration)
 - [Beacon Tools](#8-tools)
-- [Beacon Tools](#9-faq)
+- [FAQ](#9-faq)
 
 ## Prerequisites
 - update RatOS 2.1 via mainsail
