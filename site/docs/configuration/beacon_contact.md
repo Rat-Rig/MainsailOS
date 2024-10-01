@@ -10,6 +10,7 @@
 - [First print and fine tuning](#6-first-print-and-fine-tuning)
 - [RatOS configuration](#7-ratos-configuration)
 - [Beacon Tools](#8-tools)
+- [Beacon Tools](#9-faq)
 
 ## Prerequisites
 - update RatOS 2.1 via mainsail
@@ -232,4 +233,7 @@ Median distance moving up 1.99990, down 2.00286, delta 0.00296 over 20 samples
 
 The delta value represents your backlash in mm.
 
+## 9. FAQ
 
+### Q: What if i want to have different z offsets for different filaments?
+A: if you want to have a different z_offset for different filament profiles, you can use `SET_GCODE_OFFSET Z_ADJUST=+0.01` or for negative z offset `SET_GCODE_OFFSET Z_ADJUST=-0.01` in your filament profiles custom gcode section. If you use Z instead of Z_ADJUST klipper will replace all previously set Z offset adjustments, including hotend expansion compensation with your provided value (which you obviously don't want).
