@@ -13,7 +13,7 @@
 RatOS comes with START_PRINT and END_PRINT macros that you can call directly from your slicers. This way the printer knows how to start a print, and you can there easily switch between slicers without worrying if you changed anything in another slicer.
 The g-code for these macros are found in `config/RatOS/macros.cfg`
 
-# Prusa Slicer 
+# Prusa Slicer
 
 *Prusa Slicer comes with full IDEX support and is the recommended slicer for all RatRig printers.*
 
@@ -56,6 +56,12 @@ Make sure the box labeled "Emit temperature commands automatically" is **uncheck
 
 ```properties
 START_PRINT EXTRUDER_TEMP={first_layer_temperature[0]},{first_layer_temperature[1]} EXTRUDER_OTHER_LAYER_TEMP={temperature[0]},{temperature[1]} BED_TEMP=[first_layer_bed_temperature] INITIAL_TOOL={initial_tool} TOTAL_LAYER_COUNT={total_layer_count} X0={first_layer_print_min[0]} Y0={first_layer_print_min[1]} X1={first_layer_print_max[0]} Y1={first_layer_print_max[1]}
+```
+
+End GCode
+
+```properties
+END_PRINT
 ```
 
 Before layer change GCode
