@@ -100,3 +100,7 @@ EOF
 echo_green "Generating and setting default locale to en_US.UTF-8..."
 # Use en_US.UTF-8 as default locale
 raspi-config nonint do_change_locale en_US.UTF-8
+
+# Step 14: isolate cpu 3 for klipper
+echo_green "Isolating CPU 3 for Klipper..."
+echo " isolcpus=3" >> /boot/cmdline.txt
