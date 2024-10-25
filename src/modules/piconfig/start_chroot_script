@@ -103,4 +103,4 @@ raspi-config nonint do_change_locale en_US.UTF-8
 
 # Step 14: isolate cpu 3 for klipper
 echo_green "Isolating CPU 3 for Klipper..."
-echo " isolcpus=3" >> /boot/cmdline.txt
+sed -i 's/console=tty1/console=tty1 isolcpus=3/' "${PICONFIG_CMDLINE_TXT_FILE}"
