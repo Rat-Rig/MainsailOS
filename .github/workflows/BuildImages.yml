@@ -67,6 +67,7 @@ jobs:
         uses: mainsail-crew/MainsailOS-actions/build-image@master
         with:
           config: ${{ matrix.config }}
+          custompios-ref: 1.5.0
 
       - name: Rename image file
         id: move-image
