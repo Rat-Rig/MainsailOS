@@ -6,6 +6,8 @@
 # Source error handling, leave this in place
 set -Ee
 
+unpack /filesystem/boot /boot root
+
 envFile="/boot/config.txt"
 if [ -f "/boot/armbianEnv.txt" ]; then
     envFile="/boot/armbianEnv.txt"
