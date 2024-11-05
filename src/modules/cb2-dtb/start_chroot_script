@@ -6,7 +6,7 @@
 # Source error handling, leave this in place
 set -Ee
 
-unpack /filesystem/boot /boot root
+unpack /filesystem/boot/dtb /boot/dtb root
 
 envFile="/boot/config.txt"
 if [ -f "/boot/armbianEnv.txt" ]; then
@@ -16,5 +16,5 @@ if [ -f "/boot/orangepiEnv.txt" ]; then
     envFile="/boot/orangepiEnv.txt"
 fi
 
-sed -i '/fdtfile=.+$/d' "${envFile}"
-echo -e "\nfdtfile=rk3566-bigtreetech-pi2.dtb" >> "${envFile}"
+sed -i '/fdtfile=.*$/d' "${envFile}"
+echo -e "fdtfile=rk3566-bigtreetech-pi2.dtb" >> "${envFile}"
