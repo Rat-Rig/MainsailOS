@@ -24,7 +24,7 @@ sensor_type: ATC Semitec 104GT-2
 sensor_pin: PF4
 ```
 
-## 2. Internal heater
+## 2. Internal (klipper/RatOS controlled) heater
 A pwm controlled chamber heater, a heater fan and a chamber thermistor to control the chamber temperature. 
 
 - if no `temperature_sensor chamber` is defined, the hotend thermistor will be used to wait for the initial chamber temperature.
@@ -59,7 +59,7 @@ heater: chamber_heater
 heater_temp: 40
 ```
 
-## 3. External heater
+## 3. External (stand-alone controller) heater
 A dedicated heater device with or without its own temperature control that can be switched on/off by a relais/output_pin and a chamber thermistor to control the initial chamber temperature. 
 
 - if no `temperature_sensor chamber` is defined, the hotend thermistor will be used to wait for the initial chamber temperature.
