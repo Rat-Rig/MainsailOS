@@ -268,6 +268,14 @@ Filament start GCode
 This is the ONLY gcode you need, delete everything else. Copy paste the following **as is**.
 :::
 
+:::info
+The "coasting" feature is likely to result in poor quality prints with Klipper. Consider using Klipper's pressure advance instead.
+
+Specifically, if the slicer dramatically changes the extrusion rate between moves then Klipper will perform deceleration and acceleration between moves. This is likely to make blobbing worse, not better.
+
+In contrast, it is okay (and often helpful) to use a slicer's "retract" setting, "wipe" setting, and/or "wipe on retract" setting.
+:::
+
 Machine start gcode
 
 ```properties
