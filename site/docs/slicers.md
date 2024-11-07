@@ -109,7 +109,7 @@ SET_PRESSURE_ADVANCE ADVANCE=0.05
 
 # Super Slicer
 
-*Super Slicer comes with full IDEX support.*
+*Super Slicer supports IDEX printers, but it is not recommended to use.*
 
 :::info
 You should be using "Klipper" as the gcode flavor and have the "Only custom Start G-Code" box checked in Printer Settings -> Custom G-Code and "Use relative E distances" box checked in Printer Settings -> General -> Advanced.
@@ -193,7 +193,7 @@ SET_PRESSURE_ADVANCE ADVANCE=0.05
 
 # Orca Slicer
 
-*Orca Slicer comes with partial IDEX support only. It lacks multi extruder support. You cant for example assign one extruder to print supports or infill.*
+*Orca Slicer supports IDEX printers, but it is not recommended to use.*
 
 :::info
 You should be using "Klipper" as the gcode flavor and have the "Use relative E distances" box checked in in Printer Settings -> Advance.
