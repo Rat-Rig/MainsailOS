@@ -107,6 +107,12 @@ Start filament GCode
 SET_PRESSURE_ADVANCE ADVANCE=0.05
 ```
 
+Pause GCode
+
+```properties
+PAUSE
+```
+
 # Super Slicer
 
 *Super Slicer supports IDEX printers, but it is not recommended to use.*
@@ -191,6 +197,12 @@ Start filament GCode
 SET_PRESSURE_ADVANCE ADVANCE=0.05
 ```
 
+Pause GCode
+
+```properties
+PAUSE
+```
+
 # Orca Slicer
 
 *Orca Slicer supports IDEX printers, but it is not recommended to use.*
@@ -265,6 +277,12 @@ Filament start GCode
 
 ```
 ; Filament gcode
+```
+
+Pause GCode
+
+```properties
+PAUSE
 ```
 
 # Cura
