@@ -85,8 +85,3 @@ cat > /etc/systemd/system/getty@tty1.service.d/autologin.conf << EOF
 ExecStart=
 ExecStart=-/sbin/agetty --autologin $BASE_USER --noclear %I \$TERM
 EOF
-
-# Step 13: Fix locale
-echo_green "Generating and setting default locale to en_US.UTF-8..."
-# Use en_US.UTF-8 as default locale
-raspi-config nonint do_change_locale en_US.UTF-8
