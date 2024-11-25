@@ -37,6 +37,7 @@ Make sure the box labeled "Emit temperature commands automatically" is **uncheck
 
 - Select `Klipper` in Printer Settings -> General -> Firmware -> G-code Flavor
 - Enable `Use relative E distances` in Printer Settings -> General -> Advanced
+- Disable `Arc fitting` in Print Settings -> Advanced -> Slicing
 
 ### Additional IDEX Configuration
 
@@ -130,6 +131,7 @@ This is the ONLY gcode you need, delete everything else. Copy paste the followin
 - Select `Klipper` in Printer Settings -> General -> Firmware -> G-code Flavor
 - Enable `Use relative E distances` in Printer Settings -> General -> Advanced
 - Enable `Only custom Start G-Code` in Printer Settings -> Custom G-Code
+- Disable `Arc fitting` in Printer Settings -> General -> Firmware
 
 ### Additional IDEX Configuration
 
@@ -219,6 +221,7 @@ This is the ONLY gcode you need, delete everything else. Copy paste the followin
 
 - Select `Klipper` in Printer Settings -> Advanced -> G-code Flavor
 - Enable `Use relative E distances` in Printer Settings -> Advanced
+- Disable `Arc fitting` in Quality -> Precision
 
 ### Additional IDEX Configuration
 
