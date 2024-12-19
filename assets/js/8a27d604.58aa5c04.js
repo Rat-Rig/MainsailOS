@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunksite=self.webpackChunksite||[]).push([[1037],{5483:function(e){e.exports=JSON.parse('{"label":"Klipper","permalink":"/blog/tags/klipper","allTagsPath":"/blog/tags","count":1}')}}]);
