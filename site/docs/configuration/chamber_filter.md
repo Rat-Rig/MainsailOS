@@ -30,11 +30,20 @@ The chamber filter control includes two customizable macro hooks:
 ```
 [gcode_macro _CHAMBER_FILTER_TURN_ON]
 gcode:
-    # Configuration
-    {% set chamber_filter_speed = printer["gcode_macro RatOS"].chamber_filter_speed|default(0)|float %}
+	# parameters
+	{% set at = params.AT|default('')|lower %}
 
-    # Turn filter fan on
-    SET_FAN_SPEED FAN=filter SPEED={chamber_filter_speed}
+	# config
+	{% set chamber_filter_speed = printer["gcode_macro RatOS"].chamber_filter_speed|default(0)|float %}
+	{% if at == "print_end" %}
+		{% set chamber_filter_speed = printer["gcode_macro RatOS"].chamber_filter_disable_speed|default(0)|float %}
+	{% endif %}
+
+	# reset timer
+	UPDATE_DELAYED_GCODE ID=_CHAMBER_FILTER_OFF_TIMER DURATION=0
+
+	# turn filter fan on
+	SET_FAN_SPEED FAN=filter SPEED={chamber_filter_speed}
 ```
 
 ```
