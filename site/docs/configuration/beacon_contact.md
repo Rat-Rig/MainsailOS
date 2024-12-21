@@ -147,7 +147,7 @@ With RatOS, you can automatically compensate for gantry twist across the entire 
 
 #### Measuring Gantry Twist
 
-- `BEACON_MEASURE_GANTRY_TWIST` automatically measures the gantry twist at multiple locations on the bed. It will home your printer and level the bed if needed. The results will be displayed after the test has finished. The command may throw a tolerance error - in this case, simply repeat it until successful.
+- `BEACON_MEASURE_BEACON_OFFSET` automatically measures the gantry twist at multiple locations on the bed. It will home your printer and level the bed if needed. The results will be displayed after the test has finished. The command may throw a tolerance error - in this case, simply repeat it until successful.
 
 The result will look like the following example:
 
@@ -222,25 +222,25 @@ The Beacon contact feature is activated by default, so no configuration is requi
 # Beacon probe configuration
 #####
 [gcode_macro RatOS]
-variable_beacon_bed_mesh_scv: 25                        # Square corner velocity for bed meshing with proximity method
-variable_beacon_contact_z_homing: False                 # Makes all G28 calls use contact instead of proximity scan
-variable_beacon_contact_start_print_true_zero: True     # Uses contact to determine true Z=0 for the last homing move during START_PRINT
-variable_beacon_contact_wipe_before_true_zero: True     # Enables a nozzle wipe at Y10 before true zeroing
-variable_beacon_contact_true_zero_temp: 150             # Nozzle temperature for true zeroing
-                                                        # WARNING: If you're using a smooth PEI sheet, be careful with the temperature
+variable_beacon_bed_mesh_scv: 25                        # square corner velocity for bed meshing with proximity method
+variable_beacon_contact_z_homing: False                 # Make all G28 calls use contact instead of proximity scan
+variable_beacon_contact_start_print_true_zero: True     # Use contact to determine true Z=0 for the last homing move during START_PRINT
+variable_beacon_contact_wipe_before_true_zero: True     # enables a nozzle wipe at Y10 before true zeroing
+variable_beacon_contact_true_zero_temp: 150             # nozzle temperature for true zeroing
+                                                        # WARNING: if you're using a smooth PEI sheet, be careful with the temperature
 
-variable_beacon_contact_prime_probing: True             # Probes for priming with contact method
-variable_beacon_contact_expansion_compensation: True    # Enables the nozzle thermal expansion compensation
+variable_beacon_contact_prime_probing: True             # probe for priming with contact method
+variable_beacon_contact_expansion_compensation: True    # enables the nozzle thermal expansion compensation
 
-variable_beacon_contact_bed_mesh: False                 # Performs bed mesh with contact method
-variable_beacon_contact_bed_mesh_samples: 2             # Number of probe samples for contact bed mesh
+variable_beacon_contact_bed_mesh: False                 # bed mesh with contact method
+variable_beacon_contact_bed_mesh_samples: 2             # probe samples for contact bed mesh
 
-variable_beacon_contact_z_tilt_adjust: False            # Performs z-tilt adjust with contact method
-variable_beacon_contact_z_tilt_adjust_samples: 2        # Number of probe samples for contact z-tilt adjust
+variable_beacon_contact_z_tilt_adjust: False            # z-tilt adjust with contact method
+variable_beacon_contact_z_tilt_adjust_samples: 2        # probe samples for contact z-tilt adjust
 
-variable_beacon_scan_compensation_enable: False         # Enables the Beacon scan compensation
-variable_beacon_scan_compensation_profile: "Contact"    # The contact profile name for scan compensation
-variable_beacon_scan_compensation_probe_count: 15,15    # The contact probe count for scan compensation
+variable_beacon_scan_compensation_enable: False         # Enables the beacon scan compensation
+variable_beacon_scan_compensation_profile: "Offset"     # The beacon offset profile name for the scan compensation
+variable_beacon_scan_compensation_resolution: 40        # The mesh resolution in mm for the scan compensation
 
 variable_beacon_contact_poke_bottom_limit: -1           # The bottom limit for the contact poke test
 ```
