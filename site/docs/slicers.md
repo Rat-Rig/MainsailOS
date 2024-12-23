@@ -227,6 +227,10 @@ This is the ONLY gcode you need, delete everything else. Copy paste the followin
 
 ### Additional IDEX Configuration
 
+- Select `2` in Printer Settings -> Multimaterial -> Extruders
+- Disable `Single Extruder Multi Material` in Printer Settings -> Multimaterial
+- Disable `Purge in prime tower` in Printer Settings -> Multimaterial
+- Disable `Enable filament ramming` in Printer Settings -> Multimaterial
 - Add a secondary Filament in Main UI -> Filament
 
 ### GCode Settings
