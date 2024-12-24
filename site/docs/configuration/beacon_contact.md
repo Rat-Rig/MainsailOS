@@ -243,6 +243,7 @@ variable_beacon_scan_compensation_profile: "Contact"    # The contact profile na
 variable_beacon_scan_compensation_probe_count: 15,15    # The contact probe count for scan compensation
 
 variable_beacon_contact_poke_bottom_limit: -1           # The bottom limit for the contact poke test
+variable_beacon_scan_method_automatic: False            # Enables the METHOD=automatic scan option
 ```
 
 ## 8. Tools
