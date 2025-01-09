@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Shebang for better file detection
+
+# Just guessing, there's zero information on the architecture of this image.
+BASE_ARCH="arm64"
+
+# Third party OrangePi 4 Raspberry Pi OS image.
+DOWNLOAD_URL_CHECKSUM="https://gist.githubusercontent.com/miklschmidt/c42f91aced564b1a41001b82d98d47d0/raw/ec884dda8844fd2cb17490306044819dfa68ad75/Orangepi3b_1.0.0_raspios_bullseye_server_linux5.10.160.7z.sha256"
+DOWNLOAD_URL_IMAGE="https://github.com/leeboby/raspberry-pi-os-images/releases/download/opi3b/Orangepi3b_1.0.0_raspios_bullseye_server_linux5.10.160.7z"
+MODULES=$MODULES",cb2-dtb"
+
+# export variables
+export BASE_ARCH
+export DOWNLOAD_URL_CHECKSUM
+export DOWNLOAD_URL_IMAGE

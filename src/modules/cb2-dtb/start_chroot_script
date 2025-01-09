@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Installs the CB2 device tree blob on the system
+# GPL V3
+########
+
+# Source error handling, leave this in place
+set -Ee
+
+unpack /filesystem/boot/dtb /boot/dtb root
+
+envFile="/boot/config.txt"
+if [ -f "/boot/armbianEnv.txt" ]; then
+    envFile="/boot/armbianEnv.txt"
+fi
+if [ -f "/boot/orangepiEnv.txt" ]; then
+    envFile="/boot/orangepiEnv.txt"
+fi
+
+sed -i '/fdtfile=.*$/d' "${envFile}"
+echo -e "fdtfile=rk3566-bigtreetech-pi2.dtb" >> "${envFile}"
