@@ -17,3 +17,4 @@ EnvironmentFile=/home/pi/printer_data/systemd/klipper.env
 ExecStart=/home/pi/klippy-env/bin/python $KLIPPER_ARGS
 Restart=always
 RestartSec=10
+CPUAffinity=3
